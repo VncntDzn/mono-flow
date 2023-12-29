@@ -1,6 +1,11 @@
 import { ChildrenProps } from '@/types';
-import { Flex } from '@mantine/core';
+import { Grid } from '@mantine/core';
 
 export const AuthLayout = ({ children }: ChildrenProps) => {
-  return <Flex>{children}</Flex>;
+  return (
+    <Grid overflow='hidden'>
+      <Grid.Col span={4}>{children}</Grid.Col>
+      <Grid.Col span={8}>Image here</Grid.Col>
+    </Grid>
+  );
 };
