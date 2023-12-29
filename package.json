@@ -1,7 +1,9 @@
 {
+  "name": "flow-pos",
   "workspaces": [
     "api",
     "web"
   ],
-  "private": true
+  "private": true,
+  "author": "Vincent Dizon"
 }
