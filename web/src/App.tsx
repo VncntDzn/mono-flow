@@ -1,9 +1,7 @@
+import { Signin } from './features/auth/signin/signin.page';
+
 function App() {
-  return (
-    <>
-      <h1>hi</h1>
-    </>
-  );
+  return <Signin />;
 }
 
 export default App;
