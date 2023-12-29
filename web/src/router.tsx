@@ -4,6 +4,7 @@ import { Signin } from './features/auth/signin/signin.page';
 import { Signup } from './features/auth/signup/signup.page';
 import { ForgotPassword } from './features/auth/forgot-password/forgot-password.page';
 import { NotFound } from './features/error-pages/not-found.page';
+import { Dashboard } from './features/_dashboard/dashboard.page';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         element: <ForgotPassword />,
       },
     ],
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
   },
   {
     path: '*',
