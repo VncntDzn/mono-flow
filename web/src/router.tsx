@@ -1,10 +1,11 @@
 import { Outlet, createBrowserRouter } from 'react-router-dom';
-import { UnderMaintenance } from './features/error-pages/maintenance.page';
+import { Dashboard } from './features/_dashboard/dashboard.page';
+import { ForgotPassword } from './features/auth/forgot-password/forgot-password.page';
+import { AuthLayout } from './features/auth/layouts/auth.layout';
 import { Signin } from './features/auth/signin/signin.page';
 import { Signup } from './features/auth/signup/signup.page';
-import { ForgotPassword } from './features/auth/forgot-password/forgot-password.page';
+import { UnderMaintenance } from './features/error-pages/maintenance.page';
 import { NotFound } from './features/error-pages/not-found.page';
-import { Dashboard } from './features/_dashboard/dashboard.page';
 
 const router = createBrowserRouter([
   {
@@ -20,15 +21,27 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'sign-in',
-        element: <Signin />,
+        element: (
+          <AuthLayout>
+            <Signin />
+          </AuthLayout>
+        ),
       },
       {
         path: 'sign-up',
-        element: <Signup />,
+        element: (
+          <AuthLayout>
+            <Signup />
+          </AuthLayout>
+        ),
       },
       {
         path: 'forgot-password',
-        element: <ForgotPassword />,
+        element: (
+          <AuthLayout>
+            <ForgotPassword />
+          </AuthLayout>
+        ),
       },
     ],
   },
