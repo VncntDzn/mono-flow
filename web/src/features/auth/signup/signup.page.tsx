@@ -3,6 +3,7 @@ import {
   Button,
   Card,
   Divider,
+  Flex,
   Text,
   TextInput,
 } from '@mantine/core';
@@ -11,6 +12,7 @@ import {
   IconBrandGoogleFilled,
   IconBrandTwitterFilled,
 } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 
 export const Signup = () => {
   return (
@@ -43,6 +45,11 @@ export const Signup = () => {
         type="password"
         autoComplete="current-password"
       />
+      <Flex display="flex" justify="flex-end" m="sm">
+        <Text size="xs" component={Link} to="/sign-in">
+          Sign in
+        </Text>
+      </Flex>
       <Button m="md" type="submit">
         Sign up
       </Button>
