@@ -1,32 +1,69 @@
-import { Button, Card, TextInput } from '@mantine/core';
-import { IconAt } from '@tabler/icons-react';
+import {
+  ActionIcon,
+  Button,
+  Card,
+  Divider,
+  Flex,
+  Text,
+  TextInput,
+} from '@mantine/core';
+import {
+  IconBrandFacebookFilled,
+  IconBrandGoogleFilled,
+  IconBrandTwitterFilled,
+} from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 
 export const Signin = () => {
   return (
-    <Card m="xs" component="form" shadow="sm">
+    <Card component="form" h="100vh" shadow="sm">
+      <Text size="xl" fw={500} ta="center" my="lg">
+        Mono Flow
+      </Text>
       <TextInput
-        rightSectionPointerEvents="none"
-        rightSection={<IconAt />}
         variant="filled"
         label="Your email"
         size="md"
         placeholder="Your email"
         mx="md"
+        autoComplete="email"
       />
       <TextInput
-        rightSectionPointerEvents="none"
-        rightSection={<IconAt />}
         variant="filled"
         label="Password"
         size="md"
         placeholder="Your password"
-        m="md"
+        mx="md"
         type="password"
         autoComplete="current-password"
       />
+      <Flex display="flex" justify="space-between" m="sm">
+        <Text size="xs" component={Link} to="/forgot-password">
+          Forgot password?
+        </Text>
+        <Text size="xs" component={Link} to="/sign-up">
+          Sign up
+        </Text>
+      </Flex>
       <Button mx="md" type="submit">
         Sign in
       </Button>
+
+      <Divider m="md" label="or" labelPosition="center" />
+      <ActionIcon.Group
+        m="md"
+        style={{ display: 'flex', justifyContent: 'center' }}
+      >
+        <ActionIcon variant="light" mx="xs">
+          <IconBrandGoogleFilled />
+        </ActionIcon>
+        <ActionIcon variant="light" mx="xs">
+          <IconBrandFacebookFilled />
+        </ActionIcon>
+        <ActionIcon variant="light" mx="xs">
+          <IconBrandTwitterFilled />
+        </ActionIcon>
+      </ActionIcon.Group>
     </Card>
   );
 };

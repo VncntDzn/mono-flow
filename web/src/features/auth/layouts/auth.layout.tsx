@@ -3,10 +3,8 @@ import { Grid } from '@mantine/core';
 
 export const AuthLayout = ({ children }: ChildrenProps) => {
   return (
-    <Grid overflow="hidden" h="100vh">
-      <Grid.Col span={{ base: 12, md: 4 }} h="100vh">
-        {children}
-      </Grid.Col>
+    <Grid overflow="hidden" gutter="none" h="100vh">
+      <Grid.Col span={{ base: 12, md: 4 }}>{children}</Grid.Col>
       <Grid.Col
         visibleFrom="md"
         span={8}
