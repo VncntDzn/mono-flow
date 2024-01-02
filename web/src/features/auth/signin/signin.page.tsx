@@ -16,7 +16,12 @@ import { Link } from 'react-router-dom';
 
 export const Signin = () => {
   return (
-    <Card component="form" h="100vh" shadow="sm">
+    <Card
+      component="form"
+      h="100vh"
+      shadow="md"
+      style={{ display: 'flex', justifyContent: 'center' }}
+    >
       <Text size="xl" fw={500} ta="center" my="lg">
         Mono Flow
       </Text>
