@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { APP_GUARD } from '@nestjs/core';
 
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { AuthController } from './features/auth/auth.controller';
 @Module({
   imports: [
     ThrottlerModule.forRoot([
@@ -13,7 +14,7 @@ import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
       },
     ]),
   ],
-  controllers: [AppController],
+  controllers: [AppController, AuthController],
   providers: [
     AppService,
     {
