@@ -35,6 +35,11 @@ export class UsersTable1704292197365 implements MigrationInterface {
             type: "boolean",
             default: true,
           },
+          {
+            name: "password",
+            isNullable: false,
+            type: "varchar",
+          },
         ],
       })
     );
