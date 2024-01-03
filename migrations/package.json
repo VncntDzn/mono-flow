@@ -1,0 +1,22 @@
+{
+  "name": "mono-flow-migrations",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typeorm-ds": "yarn run typeorm -- -d ./datasource.ts",
+    "up": "yarn run typeorm-ds migration:run",
+    "down": "yarn run typeorm-ds migration:revert",
+    "new": "yarn run typeorm migration:create",
+    "typeorm": "typeorm-ts-node-commonjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "pg": "^8.10.0",
+    "ts-node": "^10.9.2",
+    "typeorm": "^0.3.15",
+    "typeorm-naming-strategies": "^4.1.0"
+  }
+}
