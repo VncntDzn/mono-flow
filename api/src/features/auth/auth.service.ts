@@ -1,5 +1,5 @@
 import { User } from '@/entities/users.entity';
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -34,14 +34,13 @@ export class AuthService {
     const isPasswordMatched = await bcrypt.compare(password, res.password);
 
     if (isPasswordMatched) {
-      const payload = { sub: res.uid, username: email };
+      const payload = { username: email };
       const access_token = await this.jwtService.signAsync(payload);
       return {
         access_token,
-        user_email: res.email,
+        email: res.email,
         last_name: res.last_name,
         first_name: res.first_name,
-        uid: res.uid,
       };
     } else {
       throw new UnauthorizedException();

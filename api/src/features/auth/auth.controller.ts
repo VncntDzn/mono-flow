@@ -42,17 +42,17 @@ export class AuthController {
   @Post('/signin')
   async signin(@Body() { email, password }: SigninDTO) {
     try {
-      const { access_token, first_name, last_name, user_email, uid } =
-        await this.authService.signin({
-          email,
-          password,
-        });
-      /* response.cookie('hooman_cookie', token.access_token, {
-        httpOnly: true,
-        sameSite: 'strict',
-        maxAge: 3600, // 3600 seconds = 1hour
-      }); */
-      return { access_token, first_name, last_name, email: user_email, uid };
+      const {
+        access_token,
+        first_name,
+        last_name,
+        email: user_email,
+      } = await this.authService.signin({
+        email,
+        password,
+      });
+
+      return { access_token, first_name, last_name, user_email };
     } catch (error) {
       throw new NotFoundException('User not found.');
     }

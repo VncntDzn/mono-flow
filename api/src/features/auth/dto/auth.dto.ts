@@ -3,8 +3,6 @@ import {
   IsNotEmpty,
   IsString,
   IsStrongPassword,
-  MaxLength,
-  MinLength,
 } from 'class-validator';
 
 export class SignupDTO {
@@ -18,22 +16,10 @@ export class SignupDTO {
 
   @IsString()
   @IsNotEmpty()
-  @MinLength(2, {
-    message: 'First Name is too short',
-  })
-  @MaxLength(15, {
-    message: 'First Name is too long',
-  })
   first_name: string;
 
-  @IsStrongPassword()
+  @IsString()
   @IsNotEmpty()
-  @MinLength(1, {
-    message: 'Last Name is too short',
-  })
-  @MaxLength(15, {
-    message: 'First Name is too long',
-  })
   last_name: string;
 }
 

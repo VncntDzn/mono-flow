@@ -10,13 +10,13 @@ export class User {
   email: string;
 
   @Column()
-  firstName: string;
+  first_name: string;
 
   @Column()
-  lastName: string;
+  last_name: string;
 
   @Column({ default: true })
-  isActive: boolean;
+  is_active: boolean;
 
   @Column()
   password: string;
