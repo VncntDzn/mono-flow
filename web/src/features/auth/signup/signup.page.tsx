@@ -24,7 +24,7 @@ import { ISignup } from '../types/auth.types';
 
 export const Signup = () => {
   const { mutate, isLoading } = useSignup();
-  const { isValid, onSubmit, getInputProps, errors } = useForm({
+  const { isValid, onSubmit, getInputProps } = useForm({
     initialValues: {
       first_name: '',
       last_name: '',
@@ -130,13 +130,17 @@ export const Signup = () => {
           m="md"
           style={{ display: 'flex', justifyContent: 'center' }}
         >
-          <ActionIcon variant="light" mx="xs">
+          <ActionIcon variant="light" mx="xs" aria-label="Sign in with Google">
             <IconBrandGoogleFilled />
           </ActionIcon>
-          <ActionIcon variant="light" mx="xs">
+          <ActionIcon
+            variant="light"
+            mx="xs"
+            aria-label="Sign in with Facebook"
+          >
             <IconBrandFacebookFilled />
           </ActionIcon>
-          <ActionIcon variant="light" mx="xs">
+          <ActionIcon variant="light" mx="xs" aria-label="Sign in with Twitter">
             <IconBrandTwitterFilled />
           </ActionIcon>
         </ActionIcon.Group>

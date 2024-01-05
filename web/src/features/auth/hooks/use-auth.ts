@@ -1,11 +1,23 @@
 import { axios } from '@/libs/axios';
+import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
-import { ISignin, ISignup } from '../types/auth.types';
 import { useNavigate } from 'react-router-dom';
+import { ISignin, ISignup } from '../types/auth.types';
+
+import {
+  AuthResponseData,
+  AxiosErrorResponseData,
+  AxiosResponseData,
+} from '@/libs/axios.types';
+import { notifications } from '@mantine/notifications';
 
 export const useSignup = () => {
   const navigate = useNavigate();
-  return useMutation(
+  return useMutation<
+    AxiosResponseData<AuthResponseData>,
+    AxiosError<AxiosErrorResponseData>,
+    ISignup
+  >(
     async ({ first_name, last_name, email, password }: ISignup) => {
       return await axios.post('/auth/signup', {
         first_name,
@@ -18,8 +30,13 @@ export const useSignup = () => {
       onSuccess: () => {
         navigate('/dashboard');
       },
-      onError: () => {
-        console.log('Errorxx');
+      onError: (err) => {
+        notifications.show({
+          title: 'Sign in',
+          message: err?.response?.data.message ?? err.message,
+          autoClose: 3000,
+          color: 'red',
+        });
       },
     },
   );
@@ -27,7 +44,11 @@ export const useSignup = () => {
 
 export const useSignin = () => {
   const navigate = useNavigate();
-  return useMutation(
+  return useMutation<
+    AxiosResponseData<AuthResponseData>,
+    AxiosError<AxiosErrorResponseData>,
+    ISignin
+  >(
     async ({ email, password }: ISignin) => {
       return await axios.post('/auth/signin', {
         email,
@@ -38,8 +59,13 @@ export const useSignin = () => {
       onSuccess: () => {
         navigate('/dashboard');
       },
-      onError: () => {
-        console.log('Errorxx');
+      onError: (err) => {
+        notifications.show({
+          title: 'Sign in',
+          message: err?.response?.data.message ?? err.message,
+          autoClose: 3000,
+          color: 'red',
+        });
       },
     },
   );

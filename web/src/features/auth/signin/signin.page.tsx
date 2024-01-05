@@ -96,13 +96,17 @@ export const Signin = () => {
           m="md"
           style={{ display: 'flex', justifyContent: 'center' }}
         >
-          <ActionIcon variant="light" mx="xs">
+          <ActionIcon variant="light" mx="xs" aria-label="Sign in with Google">
             <IconBrandGoogleFilled />
           </ActionIcon>
-          <ActionIcon variant="light" mx="xs">
+          <ActionIcon
+            variant="light"
+            mx="xs"
+            aria-label="Sign in with Facebook"
+          >
             <IconBrandFacebookFilled />
           </ActionIcon>
-          <ActionIcon variant="light" mx="xs">
+          <ActionIcon variant="light" mx="xs" aria-label="Sign in with Twitter">
             <IconBrandTwitterFilled />
           </ActionIcon>
         </ActionIcon.Group>
