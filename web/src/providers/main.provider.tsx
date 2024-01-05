@@ -32,7 +32,7 @@ export const MainProvider = ({ children }: ChildrenProps) => {
           <QueryClientProvider client={queryClient}>
             <MantineProvider>
               {children}
-              <Notifications position="top-right" />
+              <Notifications limit={5} position="top-right" />
             </MantineProvider>
             <ReactQueryDevtools initialIsOpen />
           </QueryClientProvider>
