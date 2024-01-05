@@ -1,6 +1,6 @@
 import { axios } from '@/libs/axios';
 import { useMutation } from 'react-query';
-import { ISignup } from '../types/auth.types';
+import { ISignin, ISignup } from '../types/auth.types';
 import { useNavigate } from 'react-router-dom';
 
 export const useSignup = () => {
@@ -16,7 +16,7 @@ export const useSignup = () => {
     },
     {
       onSuccess: () => {
-        navigate('/dashboard')
+        navigate('/dashboard');
       },
       onError: () => {
         console.log('Errorxx');
@@ -25,6 +25,24 @@ export const useSignup = () => {
   );
 };
 
-export const useSignin = () => {};
+export const useSignin = () => {
+  const navigate = useNavigate();
+  return useMutation(
+    async ({ email, password }: ISignin) => {
+      return await axios.post('/auth/signin', {
+        email,
+        password,
+      });
+    },
+    {
+      onSuccess: () => {
+        navigate('/dashboard');
+      },
+      onError: () => {
+        console.log('Errorxx');
+      },
+    },
+  );
+};
 
 export const useForgotPassword = () => {};

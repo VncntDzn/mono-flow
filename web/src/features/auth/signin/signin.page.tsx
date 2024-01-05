@@ -4,18 +4,40 @@ import {
   Card,
   Divider,
   Flex,
+  Group,
+  PasswordInput,
   Text,
   TextInput,
 } from '@mantine/core';
+import { useForm } from '@mantine/form';
 import {
   IconBrandFacebookFilled,
   IconBrandGoogleFilled,
   IconBrandTwitterFilled,
 } from '@tabler/icons-react';
+import { zodResolver } from 'mantine-form-zod-resolver';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import { ISignin } from '../types/auth.types';
+import { useSignin } from '../hooks/use-auth';
+import { signinSchema } from '../schema/auth.schema';
 
 export const Signin = () => {
+  const { mutate, isLoading } = useSignin();
+  const { isValid, onSubmit, getInputProps } = useForm({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validate: zodResolver(signinSchema),
+  });
+
+  const handleSignin = ({ password, email }: ISignin) => {
+    mutate({
+      password,
+      email,
+    });
+  };
   return (
     <>
       <Helmet>
@@ -25,6 +47,7 @@ export const Signin = () => {
         component="form"
         h="100vh"
         shadow="md"
+        onSubmit={onSubmit(handleSignin)}
         style={{ display: 'flex', justifyContent: 'center' }}
       >
         <Text size="xl" fw={500} ta="center" my="lg">
@@ -37,15 +60,17 @@ export const Signin = () => {
           placeholder="Your email"
           mx="md"
           autoComplete="email"
+          withAsterisk
+          {...getInputProps('email')}
         />
-        <TextInput
-          variant="filled"
-          label="Password"
-          size="md"
-          placeholder="Your password"
+        <PasswordInput
           mx="md"
-          type="password"
+          size="md"
+          label="Password"
+          placeholder="Your password"
           autoComplete="current-password"
+          withAsterisk
+          {...getInputProps('password')}
         />
         <Flex display="flex" justify="space-between" m="sm">
           <Text size="xs" component={Link} to="/forgot-password">
@@ -55,10 +80,17 @@ export const Signin = () => {
             Sign up
           </Text>
         </Flex>
-        <Button mx="md" type="submit">
-          Sign in
-        </Button>
-
+        <Group>
+          <Button
+            fullWidth
+            m="md"
+            type="submit"
+            disabled={!isValid}
+            loading={isLoading}
+          >
+            Sign in
+          </Button>
+        </Group>
         <Divider m="md" label="or" labelPosition="center" />
         <ActionIcon.Group
           m="md"

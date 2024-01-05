@@ -6,3 +6,8 @@ export const signupSchema = z.object({
   email: z.string().trim().email({ message: 'Please enter a valid email' }),
   password: z.string().trim().min(6, { message: 'Minimum length is 6' }),
 });
+
+export const signinSchema = z.object({
+  email: z.string().trim().email({ message: 'Please enter a valid email' }),
+  password: z.string().trim().min(6, { message: 'Minimum length is 6' }),
+});

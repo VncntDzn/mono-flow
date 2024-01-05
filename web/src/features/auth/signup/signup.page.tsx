@@ -59,13 +59,7 @@ export const Signup = () => {
         style={{ display: 'flex', justifyContent: 'center' }}
         onSubmit={onSubmit(handleSignup)}
       >
-        <Text
-          my="lg"
-          size="xl"
-          fw={500}
-          ta="center"
-          onClick={() => console.log(errors)}
-        >
+        <Text my="lg" size="xl" fw={500} ta="center">
           Mono Flow
         </Text>
         <Flex
