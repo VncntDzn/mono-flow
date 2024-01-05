@@ -2,10 +2,12 @@ import { ChildrenProps } from '@/types';
 import { Button, MantineProvider } from '@mantine/core';
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-
+import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { Notifications } from '@mantine/notifications';
 
 const ErrorFallback = () => {
   return (
@@ -28,7 +30,10 @@ export const MainProvider = ({ children }: ChildrenProps) => {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <HelmetProvider>
           <QueryClientProvider client={queryClient}>
-            <MantineProvider>{children}</MantineProvider>
+            <MantineProvider>
+              {children}
+              <Notifications position="top-right" />
+            </MantineProvider>
             <ReactQueryDevtools initialIsOpen />
           </QueryClientProvider>
         </HelmetProvider>
