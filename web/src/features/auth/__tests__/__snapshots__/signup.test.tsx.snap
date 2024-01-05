@@ -1,0 +1,367 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Sign up page > sign up snapshot 1`] = `
+<div>
+  <style
+    data-mantine-styles="classes"
+  >
+    @media (max-width: 35.99375em) {.mantine-visible-from-xs {display: none !important;}}@media (min-width: 36em) {.mantine-hidden-from-xs {display: none !important;}}@media (max-width: 47.99375em) {.mantine-visible-from-sm {display: none !important;}}@media (min-width: 48em) {.mantine-hidden-from-sm {display: none !important;}}@media (max-width: 61.99375em) {.mantine-visible-from-md {display: none !important;}}@media (min-width: 62em) {.mantine-hidden-from-md {display: none !important;}}@media (max-width: 74.99375em) {.mantine-visible-from-lg {display: none !important;}}@media (min-width: 75em) {.mantine-hidden-from-lg {display: none !important;}}@media (max-width: 87.99375em) {.mantine-visible-from-xl {display: none !important;}}@media (min-width: 88em) {.mantine-hidden-from-xl {display: none !important;}}
+  </style>
+  <form
+    class="m-e615b15f mantine-Card-root m-1b7284a3 mantine-Paper-root"
+    style="--paper-shadow: var(--mantine-shadow-md); display: flex; justify-content: center; height: 100vh;"
+  >
+    <p
+      class="mantine-focus-auto m-b6d8b162 mantine-Text-root"
+      data-size="xl"
+      style="--text-fz: var(--mantine-font-size-xl); --text-lh: var(--mantine-line-height-xl); margin-top: var(--mantine-spacing-lg); margin-bottom: var(--mantine-spacing-lg); font-weight: 500; text-align: center;"
+    >
+      Mono Flow
+    </p>
+    <style
+      data-mantine-styles="inline"
+    >
+      .__m__-r2{flex-direction:column;}@media(min-width: 62em){.__m__-r2{flex-direction:row;}}
+    </style>
+    <style
+      data-mantine-styles="inline"
+    >
+      .__m__-r3{padding:var(--mantine-spacing-md);}@media(min-width: 62em){.__m__-r3{padding:var(--mantine-spacing-sm);width:100%;}}
+    </style>
+    <div
+      class="m-8bffd616 mantine-Flex-root __m__-r2 __m__-r3"
+      style="gap: var(--mantine-spacing-md);"
+    >
+      <div
+        class="m-46b77525 mantine-InputWrapper-root mantine-TextInput-root"
+        data-size="md"
+        data-variant="filled"
+        style="width: inherit;"
+      >
+        <label
+          class="m-8fdc1311 mantine-InputWrapper-label mantine-TextInput-label"
+          data-required="true"
+          data-size="md"
+          data-variant="filled"
+          for="mantine-vvuq4zygu"
+          id="mantine-vvuq4zygu-label"
+          style="--input-label-size: var(--mantine-font-size-md);"
+        >
+          First name
+          <span
+            aria-hidden="true"
+            class="m-78a94662 mantine-InputWrapper-required mantine-TextInput-required"
+          >
+             *
+          </span>
+        </label>
+        <div
+          class="m-6c018570 mantine-Input-wrapper mantine-TextInput-wrapper"
+          data-size="md"
+          data-variant="filled"
+          style="--input-height: var(--input-height-md); --input-fz: var(--mantine-font-size-md);"
+        >
+          <input
+            aria-invalid="false"
+            autocapitalize="word"
+            class="m-8fb7ebe7 mantine-Input-input mantine-TextInput-input"
+            data-variant="filled"
+            id="mantine-vvuq4zygu"
+            placeholder="First name"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="m-46b77525 mantine-InputWrapper-root mantine-TextInput-root"
+        data-size="md"
+        data-variant="filled"
+        style="width: inherit;"
+      >
+        <label
+          class="m-8fdc1311 mantine-InputWrapper-label mantine-TextInput-label"
+          data-required="true"
+          data-size="md"
+          data-variant="filled"
+          for="mantine-ilpi3tpb0"
+          id="mantine-ilpi3tpb0-label"
+          style="--input-label-size: var(--mantine-font-size-md);"
+        >
+          Last name
+          <span
+            aria-hidden="true"
+            class="m-78a94662 mantine-InputWrapper-required mantine-TextInput-required"
+          >
+             *
+          </span>
+        </label>
+        <div
+          class="m-6c018570 mantine-Input-wrapper mantine-TextInput-wrapper"
+          data-size="md"
+          data-variant="filled"
+          style="--input-height: var(--input-height-md); --input-fz: var(--mantine-font-size-md);"
+        >
+          <input
+            aria-invalid="false"
+            autocapitalize="word"
+            class="m-8fb7ebe7 mantine-Input-input mantine-TextInput-input"
+            data-variant="filled"
+            id="mantine-ilpi3tpb0"
+            placeholder="Last name"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="m-46b77525 mantine-InputWrapper-root mantine-TextInput-root"
+      data-size="md"
+      data-variant="filled"
+      style="margin-right: var(--mantine-spacing-md); margin-left: var(--mantine-spacing-md);"
+    >
+      <label
+        class="m-8fdc1311 mantine-InputWrapper-label mantine-TextInput-label"
+        data-required="true"
+        data-size="md"
+        data-variant="filled"
+        for="mantine-jhh0chpyy"
+        id="mantine-jhh0chpyy-label"
+        style="--input-label-size: var(--mantine-font-size-md);"
+      >
+        Your email
+        <span
+          aria-hidden="true"
+          class="m-78a94662 mantine-InputWrapper-required mantine-TextInput-required"
+        >
+           *
+        </span>
+      </label>
+      <div
+        class="m-6c018570 mantine-Input-wrapper mantine-TextInput-wrapper"
+        data-size="md"
+        data-variant="filled"
+        style="--input-height: var(--input-height-md); --input-fz: var(--mantine-font-size-md);"
+      >
+        <input
+          aria-invalid="false"
+          autocomplete="email"
+          class="m-8fb7ebe7 mantine-Input-input mantine-TextInput-input"
+          data-variant="filled"
+          id="mantine-jhh0chpyy"
+          placeholder="Your email"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="m-f61ca620 mantine-PasswordInput-root m-46b77525 mantine-InputWrapper-root mantine-PasswordInput-root"
+      data-size="md"
+      style="--psi-icon-size: var(--psi-icon-size-md); --psi-button-size: var(--psi-button-size-md); margin-right: var(--mantine-spacing-md); margin-left: var(--mantine-spacing-md);"
+    >
+      <label
+        class="m-8fdc1311 mantine-InputWrapper-label mantine-PasswordInput-label"
+        data-required="true"
+        data-size="md"
+        for="mantine-tt1yf55xc"
+        id="mantine-tt1yf55xc-label"
+        style="--input-label-size: var(--mantine-font-size-md);"
+      >
+        Password
+        <span
+          aria-hidden="true"
+          class="m-78a94662 mantine-InputWrapper-required mantine-PasswordInput-required"
+        >
+           *
+        </span>
+      </label>
+      <div
+        class="m-6c018570 mantine-Input-wrapper mantine-PasswordInput-wrapper"
+        data-size="md"
+        data-variant="default"
+        data-with-right-section="true"
+        style="--input-height: var(--input-height-md); --input-fz: var(--mantine-font-size-md); --input-left-section-pointer-events: none; --input-right-section-pointer-events: all;"
+      >
+        <div
+          class="m-ccf8da4c m-8fb7ebe7 mantine-Input-input mantine-PasswordInput-input"
+          data-variant="default"
+        >
+          <input
+            autocomplete="current-password"
+            class="m-f2d85dd2 mantine-PasswordInput-innerInput"
+            id="mantine-tt1yf55xc"
+            placeholder="Your password"
+            type="password"
+            value=""
+          />
+        </div>
+        <div
+          class="m-82577fc2 mantine-Input-section mantine-PasswordInput-section"
+          data-position="right"
+        >
+          <button
+            aria-hidden="true"
+            class="mantine-focus-auto mantine-active m-b1072d44 mantine-PasswordInput-visibilityToggle m-8d3f4000 mantine-ActionIcon-root m-87cf2631 mantine-UnstyledButton-root"
+            data-variant="subtle"
+            style="--ai-bg: transparent; --ai-hover: var(--mantine-color-gray-light-hover); --ai-color: var(--mantine-color-gray-light-color); --ai-bd: calc(0.0625rem * var(--mantine-scale)) solid transparent;"
+            tabindex="-1"
+            type="button"
+          >
+            <svg
+              fill="none"
+              style="width: var(--psi-icon-size); height: var(--psi-icon-size);"
+              viewBox="0 0 15 15"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M7.5 11C4.80285 11 2.52952 9.62184 1.09622 7.50001C2.52952 5.37816 4.80285 4 7.5 4C10.1971 4 12.4705 5.37816 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11ZM7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C1.65639 10.2936 4.30786 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C13.3436 4.70638 10.6921 3 7.5 3ZM7.5 9.5C8.60457 9.5 9.5 8.60457 9.5 7.5C9.5 6.39543 8.60457 5.5 7.5 5.5C6.39543 5.5 5.5 6.39543 5.5 7.5C5.5 8.60457 6.39543 9.5 7.5 9.5Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="m-8bffd616 mantine-Flex-root __m__-rq"
+      style="justify-content: flex-end; margin: var(--mantine-spacing-sm); display: flex;"
+    >
+      <a
+        class="mantine-focus-auto m-b6d8b162 mantine-Text-root"
+        data-size="xs"
+        href="/sign-in"
+        style="--text-fz: var(--mantine-font-size-xs); --text-lh: var(--mantine-line-height-xs);"
+      >
+        Sign in
+      </a>
+    </div>
+    <div
+      class="m-4081bf90 mantine-Group-root"
+      style="--group-gap: var(--mantine-spacing-md); --group-align: center; --group-justify: flex-start; --group-wrap: wrap;"
+    >
+      <button
+        class="mantine-focus-auto mantine-active m-77c9d27d mantine-Button-root m-87cf2631 mantine-UnstyledButton-root"
+        data-block="true"
+        style="margin: var(--mantine-spacing-md);"
+        type="submit"
+      >
+        <span
+          aria-hidden="true"
+          class="m-a25b86ee mantine-Button-loader"
+        >
+          <span
+            class="m-b34414df m-5ae2e3c mantine-Loader-root"
+            style="--loader-size: calc(var(--button-height) / 1.8); --loader-color: var(--button-color);"
+          />
+        </span>
+        <span
+          class="m-80f1301b mantine-Button-inner"
+        >
+          <span
+            class="m-811560b9 mantine-Button-label"
+          >
+            Sign up
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      class="m-3eebeb36 mantine-Divider-root"
+      data-orientation="horizontal"
+      data-with-label="true"
+      role="separator"
+      style="margin: var(--mantine-spacing-md);"
+    >
+      <span
+        class="m-9e365f20 mantine-Divider-label"
+        data-position="center"
+      >
+        or
+      </span>
+    </div>
+    <div
+      class="m-1a0f1b21 mantine-ActionIconGroup-group"
+      data-orientation="horizontal"
+      role="group"
+      style="display: flex; justify-content: center; margin: var(--mantine-spacing-md);"
+    >
+      <button
+        class="mantine-focus-auto mantine-active m-8d3f4000 mantine-ActionIcon-root m-87cf2631 mantine-UnstyledButton-root"
+        data-variant="light"
+        style="--ai-bg: var(--mantine-color-blue-light); --ai-hover: var(--mantine-color-blue-light-hover); --ai-color: var(--mantine-color-blue-light-color); --ai-bd: calc(0.0625rem * var(--mantine-scale)) solid transparent; margin-right: var(--mantine-spacing-xs); margin-left: var(--mantine-spacing-xs);"
+        type="button"
+      >
+        <svg
+          class="tabler-icon tabler-icon-brand-google-filled"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1 -1.265 .06a6 6 0 1 0 2.103 6.836l.001 -.004h-3.66a1 1 0 0 1 -.992 -.883l-.007 -.117v-2a1 1 0 0 1 1 -1h6.945a1 1 0 0 1 .994 .89c.04 .367 .061 .737 .061 1.11c0 5.523 -4.477 10 -10 10s-10 -4.477 -10 -10s4.477 -10 10 -10z"
+            fill="currentColor"
+            stroke-width="0"
+          />
+        </svg>
+      </button>
+      <button
+        class="mantine-focus-auto mantine-active m-8d3f4000 mantine-ActionIcon-root m-87cf2631 mantine-UnstyledButton-root"
+        data-variant="light"
+        style="--ai-bg: var(--mantine-color-blue-light); --ai-hover: var(--mantine-color-blue-light-hover); --ai-color: var(--mantine-color-blue-light-color); --ai-bd: calc(0.0625rem * var(--mantine-scale)) solid transparent; margin-right: var(--mantine-spacing-xs); margin-left: var(--mantine-spacing-xs);"
+        type="button"
+      >
+        <svg
+          class="tabler-icon tabler-icon-brand-facebook-filled"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 2a1 1 0 0 1 .993 .883l.007 .117v4a1 1 0 0 1 -.883 .993l-.117 .007h-3v1h3a1 1 0 0 1 .991 1.131l-.02 .112l-1 4a1 1 0 0 1 -.858 .75l-.113 .007h-2v6a1 1 0 0 1 -.883 .993l-.117 .007h-4a1 1 0 0 1 -.993 -.883l-.007 -.117v-6h-2a1 1 0 0 1 -.993 -.883l-.007 -.117v-4a1 1 0 0 1 .883 -.993l.117 -.007h2v-1a6 6 0 0 1 5.775 -5.996l.225 -.004h3z"
+            fill="currentColor"
+            stroke-width="0"
+          />
+        </svg>
+      </button>
+      <button
+        class="mantine-focus-auto mantine-active m-8d3f4000 mantine-ActionIcon-root m-87cf2631 mantine-UnstyledButton-root"
+        data-variant="light"
+        style="--ai-bg: var(--mantine-color-blue-light); --ai-hover: var(--mantine-color-blue-light-hover); --ai-color: var(--mantine-color-blue-light-color); --ai-bd: calc(0.0625rem * var(--mantine-scale)) solid transparent; margin-right: var(--mantine-spacing-xs); margin-left: var(--mantine-spacing-xs);"
+        type="button"
+      >
+        <svg
+          class="tabler-icon tabler-icon-brand-twitter-filled"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.058 3.41c-1.807 .767 -2.995 2.453 -3.056 4.38l-.002 .182l-.243 -.023c-2.392 -.269 -4.498 -1.512 -5.944 -3.531a1 1 0 0 0 -1.685 .092l-.097 .186l-.049 .099c-.719 1.485 -1.19 3.29 -1.017 5.203l.03 .273c.283 2.263 1.5 4.215 3.779 5.679l.173 .107l-.081 .043c-1.315 .663 -2.518 .952 -3.827 .9c-1.056 -.04 -1.446 1.372 -.518 1.878c3.598 1.961 7.461 2.566 10.792 1.6c4.06 -1.18 7.152 -4.223 8.335 -8.433l.127 -.495c.238 -.993 .372 -2.006 .401 -3.024l.003 -.332l.393 -.779l.44 -.862l.214 -.434l.118 -.247c.265 -.565 .456 -1.033 .574 -1.43l.014 -.056l.008 -.018c.22 -.593 -.166 -1.358 -.941 -1.358l-.122 .007a.997 .997 0 0 0 -.231 .057l-.086 .038a7.46 7.46 0 0 1 -.88 .36l-.356 .115l-.271 .08l-.772 .214c-1.336 -1.118 -3.144 -1.254 -5.012 -.554l-.211 .084z"
+            fill="currentColor"
+            stroke-width="0"
+          />
+        </svg>
+      </button>
+    </div>
+  </form>
+</div>
+`;

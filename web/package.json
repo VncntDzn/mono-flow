@@ -7,9 +7,12 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.23.3",
     "@hookform/resolvers": "^3.3.4",
     "@mantine/core": "^7.3.2",
     "@mantine/dates": "^7.3.2",
@@ -21,9 +24,11 @@
     "@mantine/nprogress": "^7.3.2",
     "@mantine/tiptap": "^7.3.2",
     "@tabler/icons-react": "^2.44.0",
+    "@testing-library/react-hooks": "^8.0.1",
     "@tiptap/extension-link": "^2.1.13",
     "@tiptap/react": "^2.1.13",
     "@tiptap/starter-kit": "^2.1.13",
+    "@vitejs/plugin-react": "^4.2.1",
     "axios": "^1.6.4",
     "dayjs": "^1.11.10",
     "eslint-plugin-unused-imports": "^3.0.0",
@@ -35,9 +40,11 @@
     "react-helmet-async": "^2.0.4",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.21.1",
+    "react-test-renderer": "^18.2.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.1.2",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
@@ -46,10 +53,13 @@
     "eslint": "^8.55.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "happy-dom": "^12.10.3",
+    "nock": "^13.4.0",
     "postcss": "^8.4.32",
     "postcss-preset-mantine": "^1.12.2",
     "postcss-simple-vars": "^7.0.1",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vitest": "^1.1.2"
   }
 }
