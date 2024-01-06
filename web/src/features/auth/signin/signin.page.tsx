@@ -16,11 +16,10 @@ import {
   IconBrandTwitterFilled,
 } from '@tabler/icons-react';
 import { zodResolver } from 'mantine-form-zod-resolver';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { ISignin } from '../types/auth.types';
 import { useSignin } from '../hooks/use-auth';
 import { signinSchema } from '../schema/auth.schema';
+import { ISignin } from '../types/auth.types';
 
 export const Signin = () => {
   const { mutate, isLoading } = useSignin();
@@ -39,78 +38,69 @@ export const Signin = () => {
     });
   };
   return (
-    <>
-      <Helmet>
-        <title>Flow | Sign-in</title>
-      </Helmet>
-      <Card
-        component="form"
-        h="100vh"
-        shadow="md"
-        onSubmit={onSubmit(handleSignin)}
+    <Card
+      component="form"
+      h="100vh"
+      shadow="md"
+      onSubmit={onSubmit(handleSignin)}
+      style={{ display: 'flex', justifyContent: 'center' }}
+    >
+      <Text size="xl" fw={500} ta="center" my="lg">
+        Mono Flow
+      </Text>
+      <TextInput
+        variant="filled"
+        label="Your email"
+        size="md"
+        placeholder="Your email"
+        mx="md"
+        autoComplete="email"
+        withAsterisk
+        {...getInputProps('email')}
+      />
+      <PasswordInput
+        mx="md"
+        size="md"
+        label="Password"
+        placeholder="Your password"
+        autoComplete="current-password"
+        withAsterisk
+        {...getInputProps('password')}
+      />
+      <Flex display="flex" justify="space-between" m="sm">
+        <Text size="xs" component={Link} to="/forgot-password">
+          Forgot password?
+        </Text>
+        <Text size="xs" component={Link} to="/sign-up">
+          Sign up
+        </Text>
+      </Flex>
+      <Group>
+        <Button
+          fullWidth
+          m="md"
+          type="submit"
+          disabled={!isValid}
+          loading={isLoading}
+        >
+          Sign in
+        </Button>
+      </Group>
+      <Divider m="md" label="or" labelPosition="center" />
+      <ActionIcon.Group
+        m="md"
         style={{ display: 'flex', justifyContent: 'center' }}
       >
-        <Text size="xl" fw={500} ta="center" my="lg">
-          Mono Flow
-        </Text>
-        <TextInput
-          variant="filled"
-          label="Your email"
-          size="md"
-          placeholder="Your email"
-          mx="md"
-          autoComplete="email"
-          withAsterisk
-          {...getInputProps('email')}
-        />
-        <PasswordInput
-          mx="md"
-          size="md"
-          label="Password"
-          placeholder="Your password"
-          autoComplete="current-password"
-          withAsterisk
-          {...getInputProps('password')}
-        />
-        <Flex display="flex" justify="space-between" m="sm">
-          <Text size="xs" component={Link} to="/forgot-password">
-            Forgot password?
-          </Text>
-          <Text size="xs" component={Link} to="/sign-up">
-            Sign up
-          </Text>
-        </Flex>
-        <Group>
-          <Button
-            fullWidth
-            m="md"
-            type="submit"
-            disabled={!isValid}
-            loading={isLoading}
-          >
-            Sign in
-          </Button>
-        </Group>
-        <Divider m="md" label="or" labelPosition="center" />
-        <ActionIcon.Group
-          m="md"
-          style={{ display: 'flex', justifyContent: 'center' }}
-        >
-          <ActionIcon variant="light" mx="xs" aria-label="Sign in with Google">
-            <IconBrandGoogleFilled />
-          </ActionIcon>
-          <ActionIcon
-            variant="light"
-            mx="xs"
-            aria-label="Sign in with Facebook"
-          >
-            <IconBrandFacebookFilled />
-          </ActionIcon>
-          <ActionIcon variant="light" mx="xs" aria-label="Sign in with Twitter">
-            <IconBrandTwitterFilled />
-          </ActionIcon>
-        </ActionIcon.Group>
-      </Card>
-    </>
+        <ActionIcon variant="light" mx="xs" aria-label="Sign in with Google">
+          <IconBrandGoogleFilled />
+        </ActionIcon>
+        <ActionIcon variant="light" mx="xs" aria-label="Sign in with Facebook">
+          <IconBrandFacebookFilled />
+        </ActionIcon>
+        <ActionIcon variant="light" mx="xs" aria-label="Sign in with Twitter">
+          <IconBrandTwitterFilled />
+        </ActionIcon>
+      </ActionIcon.Group>
+    </Card>
   );
 };

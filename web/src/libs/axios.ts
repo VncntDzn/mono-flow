@@ -5,9 +5,9 @@ export const axios: AxiosInstance = Axios.create({
   baseURL: import.meta.env.VITE_API,
 });
 
-axios.interceptors.request.use((config) => {
+axios.interceptors.request.use(async (config) => {
   // Read token from localStorage
-  const token = localForage.getItem('access_token');
+  const token = await localForage.getItem('access_token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -16,8 +16,9 @@ axios.interceptors.request.use((config) => {
 });
 
 axios.interceptors.response.use(
-  (response) => {
-    localForage.setItem('accessToken', response.data.access_token);
+  async (response) => {
+    await localForage.setItem('access_token', response.data.access_token);
+
     return response;
   },
   (error) => {

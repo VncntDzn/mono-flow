@@ -16,7 +16,6 @@ import {
   IconBrandTwitterFilled,
 } from '@tabler/icons-react';
 import { zodResolver } from 'mantine-form-zod-resolver';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useSignup } from '../hooks/use-auth';
 import { signupSchema } from '../schema/auth.schema';
@@ -48,103 +47,94 @@ export const Signup = () => {
     });
   };
   return (
-    <>
-      <Helmet>
-        <title>Flow | Sign-up</title>
-      </Helmet>
-      <Card
-        component="form"
-        h="100vh"
-        shadow="md"
-        style={{ display: 'flex', justifyContent: 'center' }}
-        onSubmit={onSubmit(handleSignup)}
+    <Card
+      component="form"
+      h="100vh"
+      shadow="md"
+      style={{ display: 'flex', justifyContent: 'center' }}
+      onSubmit={onSubmit(handleSignup)}
+    >
+      <Text my="lg" size="xl" fw={500} ta="center">
+        Mono Flow
+      </Text>
+      <Flex
+        w={{ md: '100%' }}
+        p={{ base: 'md', md: 'sm' }}
+        gap="md"
+        direction={{ base: 'column', md: 'row' }}
       >
-        <Text my="lg" size="xl" fw={500} ta="center">
-          Mono Flow
-        </Text>
-        <Flex
-          w={{ md: '100%' }}
-          p={{ base: 'md', md: 'sm' }}
-          gap="md"
-          direction={{ base: 'column', md: 'row' }}
-        >
-          <TextInput
-            variant="filled"
-            label="First name"
-            size="md"
-            placeholder="First name"
-            autoCapitalize="word"
-            withAsterisk
-            {...getInputProps('first_name')}
-            w="inherit"
-          />
-          <TextInput
-            variant="filled"
-            w="inherit"
-            label="Last name"
-            size="md"
-            placeholder="Last name"
-            autoCapitalize="word"
-            withAsterisk
-            {...getInputProps('last_name')}
-          />
-        </Flex>
         <TextInput
           variant="filled"
-          label="Your email"
+          label="First name"
           size="md"
-          placeholder="Your email"
-          autoComplete="email"
-          mx="md"
+          placeholder="First name"
+          autoCapitalize="word"
           withAsterisk
-          {...getInputProps('email')}
+          {...getInputProps('first_name')}
+          w="inherit"
         />
-        <PasswordInput
-          mx="md"
+        <TextInput
+          variant="filled"
+          w="inherit"
+          label="Last name"
           size="md"
-          label="Password"
-          placeholder="Your password"
-          autoComplete="current-password"
+          placeholder="Last name"
+          autoCapitalize="word"
           withAsterisk
-          {...getInputProps('password')}
+          {...getInputProps('last_name')}
         />
+      </Flex>
+      <TextInput
+        variant="filled"
+        label="Your email"
+        size="md"
+        placeholder="Your email"
+        autoComplete="email"
+        mx="md"
+        withAsterisk
+        {...getInputProps('email')}
+      />
+      <PasswordInput
+        mx="md"
+        size="md"
+        label="Password"
+        placeholder="Your password"
+        autoComplete="current-password"
+        withAsterisk
+        {...getInputProps('password')}
+      />
 
-        <Flex display="flex" justify="flex-end" m="sm">
-          <Text size="xs" component={Link} to="/sign-in">
-            Sign in
-          </Text>
-        </Flex>
-        <Group>
-          <Button
-            fullWidth
-            m="md"
-            type="submit"
-            disabled={!isValid}
-            loading={isLoading}
-          >
-            Sign up
-          </Button>
-        </Group>
-        <Divider m="md" label="or" labelPosition="center" />
-        <ActionIcon.Group
+      <Flex display="flex" justify="flex-end" m="sm">
+        <Text size="xs" component={Link} to="/sign-in">
+          Sign in
+        </Text>
+      </Flex>
+      <Group>
+        <Button
+          fullWidth
           m="md"
-          style={{ display: 'flex', justifyContent: 'center' }}
+          type="submit"
+          disabled={!isValid}
+          loading={isLoading}
         >
-          <ActionIcon variant="light" mx="xs" aria-label="Sign in with Google">
-            <IconBrandGoogleFilled />
-          </ActionIcon>
-          <ActionIcon
-            variant="light"
-            mx="xs"
-            aria-label="Sign in with Facebook"
-          >
-            <IconBrandFacebookFilled />
-          </ActionIcon>
-          <ActionIcon variant="light" mx="xs" aria-label="Sign in with Twitter">
-            <IconBrandTwitterFilled />
-          </ActionIcon>
-        </ActionIcon.Group>
-      </Card>
-    </>
+          Sign up
+        </Button>
+      </Group>
+      <Divider m="md" label="or" labelPosition="center" />
+      <ActionIcon.Group
+        m="md"
+        style={{ display: 'flex', justifyContent: 'center' }}
+      >
+        <ActionIcon variant="light" mx="xs" aria-label="Sign in with Google">
+          <IconBrandGoogleFilled />
+        </ActionIcon>
+        <ActionIcon variant="light" mx="xs" aria-label="Sign in with Facebook">
+          <IconBrandFacebookFilled />
+        </ActionIcon>
+        <ActionIcon variant="light" mx="xs" aria-label="Sign in with Twitter">
+          <IconBrandTwitterFilled />
+        </ActionIcon>
+      </ActionIcon.Group>
+    </Card>
   );
 };

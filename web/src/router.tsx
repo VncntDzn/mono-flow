@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Outlet, createBrowserRouter } from 'react-router-dom';
 import { Dashboard } from './features/_dashboard/dashboard.page';
 import { ForgotPassword } from './features/auth/forgot-password/forgot-password.page';
@@ -22,25 +23,40 @@ const router = createBrowserRouter([
       {
         path: 'sign-in',
         element: (
-          <AuthLayout>
-            <Signin />
-          </AuthLayout>
+          <>
+            <Helmet>
+              <title>Flow | Sign-in</title>
+            </Helmet>
+            <AuthLayout>
+              <Signin />
+            </AuthLayout>
+          </>
         ),
       },
       {
         path: 'sign-up',
         element: (
-          <AuthLayout>
-            <Signup />
-          </AuthLayout>
+          <>
+            <Helmet>
+              <title>Flow | Sign-up</title>
+            </Helmet>
+            <AuthLayout>
+              <Signup />
+            </AuthLayout>
+          </>
         ),
       },
       {
         path: 'forgot-password',
         element: (
-          <AuthLayout>
-            <ForgotPassword />
-          </AuthLayout>
+          <>
+            <Helmet>
+              <title>Flow | Forgot Password</title>
+            </Helmet>
+            <AuthLayout>
+              <ForgotPassword />
+            </AuthLayout>
+          </>
         ),
       },
     ],
