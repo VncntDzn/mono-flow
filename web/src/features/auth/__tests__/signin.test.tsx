@@ -67,7 +67,7 @@ describe('Sign ip page', () => {
     const { result, waitFor } = renderHook(() => useSignin(), {
       wrapper: wrapper,
     });
-    nock('http://localhost:3000/api')
+    nock(import.meta.env.VITE_API)
       .post(`/auth/signin`)
       // Mocking the response with status code = 200
       .reply(201, {
@@ -91,7 +91,7 @@ describe('Sign ip page', () => {
     const { result, waitFor } = renderHook(() => useSignin(), {
       wrapper: wrapper,
     });
-    nock('http://localhost:3000/api')
+    nock(import.meta.env.VITE_API)
       .post(`/auth/signin`)
       // Mocking the response with status code = 200
       .reply(404, {});

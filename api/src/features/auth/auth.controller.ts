@@ -52,7 +52,14 @@ export class AuthController {
         password,
       });
 
-      return { access_token, first_name, last_name, user_email };
+      return {
+        access_token,
+        user: {
+          first_name,
+          last_name,
+          user_email,
+        },
+      };
     } catch (error) {
       throw new NotFoundException('User not found.');
     }

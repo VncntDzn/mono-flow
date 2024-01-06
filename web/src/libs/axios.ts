@@ -2,12 +2,12 @@ import Axios, { AxiosInstance } from 'axios';
 import localForage from 'localforage';
 
 export const axios: AxiosInstance = Axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: import.meta.env.VITE_API,
 });
 
 axios.interceptors.request.use((config) => {
   // Read token from localStorage
-  const token = localForage.getItem('accessToken');
+  const token = localForage.getItem('access_token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -17,6 +17,7 @@ axios.interceptors.request.use((config) => {
 
 axios.interceptors.response.use(
   (response) => {
+    localForage.setItem('accessToken', response.data.access_token);
     return response;
   },
   (error) => {

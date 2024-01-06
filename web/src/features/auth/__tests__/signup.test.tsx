@@ -67,7 +67,7 @@ describe('Sign up page', () => {
     const { result, waitFor } = renderHook(() => useSignup(), {
       wrapper: wrapper,
     });
-    nock('http://localhost:3000/api')
+    nock(import.meta.env.VITE_API)
       .post(`/auth/signup`)
       // Mocking the response with status code = 200
       .reply(201, {
@@ -93,7 +93,7 @@ describe('Sign up page', () => {
     const { result, waitFor } = renderHook(() => useSignup(), {
       wrapper: wrapper,
     });
-    nock('http://localhost:3000/api')
+    nock(import.meta.env.VITE_API)
       .post(`/auth/signup`)
       // Mocking the response with status code = 200
       .reply(404, {});
