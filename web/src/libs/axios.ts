@@ -17,8 +17,6 @@ axios.interceptors.request.use(async (config) => {
 
 axios.interceptors.response.use(
   async (response) => {
-    await localForage.setItem('access_token', response.data.access_token);
-
     return response;
   },
   (error) => {

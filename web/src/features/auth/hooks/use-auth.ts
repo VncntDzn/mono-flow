@@ -10,6 +10,7 @@ import {
   AxiosResponseData,
 } from '@/libs/axios.types';
 import { notifications } from '@mantine/notifications';
+import localforage from 'localforage';
 
 export const useSignup = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export const useSignup = () => {
     },
     {
       onSuccess: () => {
-        navigate('/dashboard');
+        navigate('/app/dashboard');
       },
       onError: (err) => {
         notifications.show({
@@ -43,7 +44,6 @@ export const useSignup = () => {
 };
 
 export const useSignin = () => {
-  const navigate = useNavigate();
   return useMutation<
     AxiosResponseData<AuthResponseData>,
     AxiosError<AxiosErrorResponseData>,
@@ -56,8 +56,13 @@ export const useSignin = () => {
       });
     },
     {
-      onSuccess: () => {
-        navigate('/dashboard');
+      onSuccess: async (data) => {
+        await localforage.setItem('auth', {
+          access_token: data.data.access_token,
+          isLoggedIn: true,
+        });
+
+        return data;
       },
       onError: (err) => {
         notifications.show({

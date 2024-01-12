@@ -8,6 +8,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Notifications } from '@mantine/notifications';
+import { AuthProvider } from './auth.provider';
 
 const ErrorFallback = () => {
   return (
@@ -30,11 +31,13 @@ export const MainProvider = ({ children }: ChildrenProps) => {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <HelmetProvider>
           <QueryClientProvider client={queryClient}>
-            <MantineProvider>
-              {children}
-              <Notifications limit={5} position="top-right" />
-            </MantineProvider>
-            <ReactQueryDevtools initialIsOpen />
+            <AuthProvider>
+              <MantineProvider>
+                {children}
+                <Notifications limit={5} position="top-right" />
+              </MantineProvider>
+              <ReactQueryDevtools initialIsOpen />
+            </AuthProvider>
           </QueryClientProvider>
         </HelmetProvider>
       </ErrorBoundary>
