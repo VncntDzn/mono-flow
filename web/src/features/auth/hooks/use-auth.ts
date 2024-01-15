@@ -1,7 +1,6 @@
 import { axios } from '@/libs/axios';
 import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
-import { useNavigate } from 'react-router-dom';
 import { ISignin, ISignup } from '../types/auth.types';
 
 import {
@@ -13,7 +12,6 @@ import { notifications } from '@mantine/notifications';
 import localforage from 'localforage';
 
 export const useSignup = () => {
-  const navigate = useNavigate();
   return useMutation<
     AxiosResponseData<AuthResponseData>,
     AxiosError<AxiosErrorResponseData>,
@@ -28,8 +26,8 @@ export const useSignup = () => {
       });
     },
     {
-      onSuccess: () => {
-        navigate('/app/dashboard');
+      onSuccess: async (data) => {
+        return data;
       },
       onError: (err) => {
         notifications.show({
