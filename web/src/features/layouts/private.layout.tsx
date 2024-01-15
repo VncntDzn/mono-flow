@@ -1,10 +1,8 @@
-import { ChildrenProps } from '@/types';
-import { Container } from '@mantine/core';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
-export const PrivateLayout = ({ children }: ChildrenProps) => {
-  if (true) {
-    return <Navigate to="/sign-in" replace />;
-  }
-  return <Container>{children}</Container>;
+export const PrivateLayout = () => {
+  const access_token = localStorage.getItem('access_token');
+
+  if (!access_token) return <Navigate to="/sign-in" replace />;
+  return <Outlet />;
 };

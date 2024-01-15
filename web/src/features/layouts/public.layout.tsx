@@ -1,3 +1,6 @@
-export const PublicLayout = () => {
-  return <div>PublicLayout</div>;
+import { ChildrenProps } from '@/types';
+import { Container } from '@mantine/core';
+
+export const PublicLayout = ({ children }: ChildrenProps) => {
+  return <Container>{children}</Container>;
 };

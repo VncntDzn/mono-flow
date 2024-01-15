@@ -7,6 +7,7 @@ import { Signup } from './features/auth/signup/signup.page';
 import { UnderMaintenance } from './features/error-pages/maintenance.page';
 import { NotFound } from './features/error-pages/not-found.page';
 import { PrivateLayout } from './features/layouts';
+import { Dashboard } from './features/_dashboard/dashboard.page';
 
 const router = createBrowserRouter([
   {
@@ -31,21 +32,60 @@ const router = createBrowserRouter([
           </>
         ),
       },
+      {
+        path: '/sign-up',
+        element: (
+          <>
+            <Helmet>
+              <title>Flow | Sign-up</title>
+            </Helmet>
+            <AuthLayout>
+              <Signup />
+            </AuthLayout>
+          </>
+        ),
+      },
+      {
+        path: '/forgot-password',
+        element: (
+          <>
+            <Helmet>
+              <title>Flow | Forgot Password</title>
+            </Helmet>
+            <AuthLayout>
+              <ForgotPassword />
+            </AuthLayout>
+          </>
+        ),
+      },
     ],
   },
 
   {
-    path: '/app',
     element: <PrivateLayout />,
     errorElement: <UnderMaintenance />,
     children: [
       {
-        path: '/app/dashboard',
-        element: <h1>Dashboardxxxx</h1>,
+        path: '/dashboard',
+        element: (
+          <>
+            <Helmet>
+              <title>Dashboard</title>
+            </Helmet>
+            <Dashboard />
+          </>
+        ),
       },
       {
-        path: '/app/user',
-        element: <h1>Userr</h1>,
+        path: '/user',
+        element: (
+          <>
+            <Helmet>
+              <title>User</title>
+            </Helmet>
+            <>User</>
+          </>
+        ),
       },
     ],
   },

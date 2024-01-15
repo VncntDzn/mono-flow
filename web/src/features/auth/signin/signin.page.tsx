@@ -16,13 +16,19 @@ import {
   IconBrandTwitterFilled,
 } from '@tabler/icons-react';
 import { zodResolver } from 'mantine-form-zod-resolver';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSignin } from '../hooks/use-auth';
 import { signinSchema } from '../schema/auth.schema';
 import { ISignin } from '../types/auth.types';
+import { useEffect } from 'react';
+import { useLocalStorage } from '@mantine/hooks';
 
 export const Signin = () => {
-  const { mutate, isLoading } = useSignin();
+  const [, setAccessToken] = useLocalStorage({
+    key: 'access_token',
+    defaultValue: '',
+  });
+  const { mutate, isLoading, data, isSuccess } = useSignin();
   const { isValid, onSubmit, getInputProps } = useForm({
     initialValues: {
       email: '',
@@ -37,6 +43,13 @@ export const Signin = () => {
       email,
     });
   };
+  const router = useNavigate();
+  useEffect(() => {
+    if (isSuccess) {
+      setAccessToken(data?.data.access_token);
+      router('/dashboard');
+    }
+  }, [data, isSuccess, router, setAccessToken]);
   return (
     <Card
       component="form"
