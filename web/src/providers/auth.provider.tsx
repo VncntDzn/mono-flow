@@ -1,7 +1,9 @@
 import { ChildrenProps } from '@/types';
-import { Reducer, createContext, useReducer } from 'react';
+import { Reducer, createContext, useEffect, useReducer, useState } from 'react';
 import { AuthActionType } from './auth.enums';
 
+import dayjs from 'dayjs';
+import { jwtDecode } from 'jwt-decode';
 export const AuthContext = createContext<IState | null>(null);
 export const AuthDispatchContext = createContext<IAuthAction | null>(null);
 
@@ -40,7 +42,27 @@ function authReducer(state: IState, actions: IAuthAction) {
   }
 }
 export const AuthProvider = ({ children }: ChildrenProps) => {
-  const [auth, dispatch] = useReducer<Reducer<IState, IAuthAction>>(authReducer, initialState);
+  const [isExpired, setIsExpired] = useState(false);
+  const access_token = localStorage.getItem('access_token');
+  const [auth, dispatch] = useReducer<Reducer<IState, IAuthAction>>(
+    authReducer,
+    initialState,
+  );
+  useEffect(() => {
+    if (access_token) {
+      const exp = jwtDecode(access_token).exp! * 1000;
+      const formattedExp = dayjs(exp).format('YYYY-MM-DD HH:mm:ss');
+      const CURRENT_DATE = dayjs().format('YYYY-MM-DD HH:mm:ss');
+
+      setIsExpired(dayjs(CURRENT_DATE).isAfter(formattedExp));
+    }
+  }, [access_token]);
+
+  useEffect(() => {
+    if (isExpired) {
+      localStorage.clear();
+    }
+  }, [isExpired]);
   return (
     <AuthContext.Provider value={auth}>
       <AuthDispatchContext.Provider value={dispatch as unknown as IAuthAction}>

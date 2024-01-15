@@ -8,6 +8,7 @@ export const axios: AxiosInstance = Axios.create({
 axios.interceptors.request.use(async (config) => {
   // Read token from localStorage
   const token = await localForage.getItem('access_token');
+
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
