@@ -1,7 +1,7 @@
 import { AppShell, Burger } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
-export const Navbar = () => {
+export const NavbarMobile = () => {
   const [opened, { toggle }] = useDisclosure();
 
   return (

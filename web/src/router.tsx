@@ -8,6 +8,7 @@ import { UnderMaintenance } from './features/error-pages/maintenance.page';
 import { NotFound } from './features/error-pages/not-found.page';
 import { PrivateLayout } from './features/layouts';
 import { Dashboard } from './features/_dashboard/dashboard.page';
+import { Profile } from './features/_profile/profile.page';
 
 const router = createBrowserRouter([
   {
@@ -77,13 +78,13 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/user',
+        path: '/profile',
         element: (
           <>
             <Helmet>
-              <title>User</title>
+              <title>Profile</title>
             </Helmet>
-            <>User</>
+            <Profile />
           </>
         ),
       },

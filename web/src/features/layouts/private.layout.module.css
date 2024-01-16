@@ -1,0 +1,7 @@
+.li {
+    text-decoration: none;
+    padding: 1rem;
+    &:hover {
+        background-color: #eeeeee;
+    }
+}
