@@ -1,20 +1,14 @@
-import {
-    ActionIcon,
-    Avatar,
-    Group,
-    Paper,
-    TextInput
-} from '@mantine/core';
+import { ActionIcon, Avatar, Group, Paper, TextInput } from '@mantine/core';
 import { IconBell, IconSearch } from '@tabler/icons-react';
 
 export const NavbarDesktop = () => {
   return (
     <Paper radius={0} withBorder p="md">
-      <Group>
+      <Group display="flex">
         <TextInput
           placeholder="Search here..."
           rightSection={<IconSearch tabIndex={1} />}
-          style={{ flexGrow: 1 }}
+          style={{ flexGrow: 1, width: 'min-content' }}
           size="md"
         />
         <Group preventGrowOverflow flex={1} justify="flex-end" align="center">

@@ -1,23 +1,16 @@
-import { NavbarDesktop } from '@/common';
-import {
-  Box,
-  Card,
-  Container,
-  Flex,
-  Grid,
-  Group,
-  List,
-  Paper,
-  Text,
-} from '@mantine/core';
+import { BottomNavigation, NavbarDesktop } from '@/common';
+import { Box, Card, Container, Flex, Grid, Paper, Text } from '@mantine/core';
 import { Link, Navigate, Outlet, useLocation } from 'react-router-dom';
 import className from './private.layout.module.css';
-import { private_routes } from './private.routes';
+import { IRoute, private_routes } from './private.routes';
+import { memo } from 'react';
 
-export const PrivateLayout = () => {
+export const PrivateLayout = memo(() => {
   const location = useLocation();
   const access_token = localStorage.getItem('access_token');
+
   if (!access_token) return <Navigate to="/sign-in" replace />;
+
   return (
     <Card component={Container} p={0} withBorder shadow="md">
       <Grid columns={12} overflow="hidden" gutter="sm">
@@ -28,7 +21,7 @@ export const PrivateLayout = () => {
           h="100vh"
         >
           <Paper withBorder h="100%">
-            {private_routes.map(({ route, name, icon }) => (
+            {private_routes.map(({ route, name, icon }: IRoute) => (
               <Flex
                 className={className.li}
                 justify="center"
@@ -57,8 +50,9 @@ export const PrivateLayout = () => {
           <Paper my="sm" p="sm">
             <Outlet />
           </Paper>
+          <BottomNavigation routes={private_routes} />
         </Grid.Col>
       </Grid>
     </Card>
   );
-};
+});
