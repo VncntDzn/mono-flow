@@ -54,6 +54,7 @@ export const PrivateLayout = memo(() => {
             </Box>
             {private_routes.map(({ route, name, icon }: IRoute) => (
               <Flex
+                aria-label={name}
                 className={className.li}
                 justify="center"
                 component={Link}
