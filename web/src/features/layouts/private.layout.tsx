@@ -1,5 +1,15 @@
 import { BottomNavigation, NavbarDesktop } from '@/common';
-import { Box, Card, Container, Flex, Grid, Paper, Text } from '@mantine/core';
+import {
+  Avatar,
+  Box,
+  Card,
+  Container,
+  Flex,
+  Grid,
+  Paper,
+  Stack,
+  Text,
+} from '@mantine/core';
 import { Link, Navigate, Outlet, useLocation } from 'react-router-dom';
 import className from './private.layout.module.css';
 import { IRoute, private_routes } from './private.routes';
@@ -12,15 +22,36 @@ export const PrivateLayout = memo(() => {
   if (!access_token) return <Navigate to="/sign-in" replace />;
 
   return (
-    <Card component={Container} p={0} withBorder shadow="md">
-      <Grid columns={12} overflow="hidden" gutter="sm">
+    <Card component={Container} withBorder shadow="xl" p={0} bg="#efefef">
+      <Grid gutter={0} columns={12} overflow="hidden">
         <Grid.Col
-          span={{ xs: 0, md: 3, lg: 3 }}
+          span={{ xs: 0, md: 3, lg: 1 }}
           component="aside"
           visibleFrom="lg"
           h="100vh"
+          p={0}
+          m={0}
         >
-          <Paper withBorder h="100%">
+          <Paper h="100%">
+            <Box py="lg">
+              <Avatar
+                tabIndex={1}
+                title="Avatar"
+                color="cyan"
+                radius="xl"
+                size="md"
+                py="lg"
+                style={{
+                  cursor: 'pointer',
+                  textAlign: 'center',
+                  border: '1px solid red',
+                  margin: 'auto',
+                  paddingTop: '2rem',
+                }}
+              >
+                VD
+              </Avatar>
+            </Box>
             {private_routes.map(({ route, name, icon }: IRoute) => (
               <Flex
                 className={className.li}
@@ -34,22 +65,25 @@ export const PrivateLayout = memo(() => {
                     location.pathname === route ? '3px solid black' : 'none',
                 }}
               >
-                <Box>{icon}</Box>
-                <Text w="5rem">{name}</Text>
+                {icon}
               </Flex>
             ))}
           </Paper>
         </Grid.Col>
         <Grid.Col
-          span={{ xs: 12, md: 9, lg: 9 }}
+          span={{ xs: 12, md: 9, lg: 'auto' }}
           component="main"
           display="flex"
           style={{ flexDirection: 'column' }}
+          p={0}
+          m={0}
         >
-          <NavbarDesktop />
-          <Paper my="sm" p="sm">
-            <Outlet />
-          </Paper>
+          <Box p="sm">
+            <NavbarDesktop />
+            <Paper p="sm" my="sm" bg="white">
+              <Outlet />
+            </Paper>
+          </Box>
           <BottomNavigation routes={private_routes} />
         </Grid.Col>
       </Grid>
