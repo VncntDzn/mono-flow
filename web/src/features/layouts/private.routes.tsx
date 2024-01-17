@@ -1,4 +1,9 @@
-import { IconDashboard, IconUser } from '@tabler/icons-react';
+import {
+  IconCards,
+  IconHistory,
+  IconLayoutCollage,
+  IconUser
+} from '@tabler/icons-react';
 
 export interface IRoute {
   icon: React.ReactNode;
@@ -7,23 +12,24 @@ export interface IRoute {
 }
 export const private_routes: IRoute[] = [
   {
-    icon: <IconDashboard />,
+    icon: <IconLayoutCollage />,
     route: '/dashboard',
     name: 'Dashboard',
+  },
+  {
+    icon: <IconCards />,
+    route: '/budget-tracker',
+    name: 'Budge Tracker',
   },
   {
     icon: <IconUser />,
     route: '/profile',
     name: 'Profile',
   },
+
   {
-    icon: <IconUser />,
-    route: '/profile-1',
-    name: 'Profile',
-  },
-  {
-    icon: <IconUser />,
-    route: '/profile-2',
-    name: 'Profile',
+    icon: <IconHistory />,
+    route: '/transactions-history',
+    name: 'Transactions History',
   },
 ];
