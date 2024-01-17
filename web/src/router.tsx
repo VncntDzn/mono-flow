@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Outlet, createBrowserRouter } from 'react-router-dom';
-import { BudgeTracker } from './features/_budget-tracker/budget.page';
+import { BudgetTracker } from './features/_budget-tracker/budget.page';
 import { Dashboard } from './features/_dashboard/dashboard.page';
 import { Profile } from './features/_profile/profile.page';
 import { TransactionsHistory } from './features/_transactions-history/transactions.page';
@@ -97,7 +97,7 @@ const router = createBrowserRouter([
             <Helmet>
               <title>Budget Tracker</title>
             </Helmet>
-            <BudgeTracker />
+            <BudgetTracker />
           </>
         ),
       },

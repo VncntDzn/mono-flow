@@ -1,19 +1,9 @@
 import { BottomNavigation, NavbarDesktop } from '@/common';
-import {
-  Avatar,
-  Box,
-  Card,
-  Container,
-  Flex,
-  Grid,
-  Paper,
-  Stack,
-  Text,
-} from '@mantine/core';
+import { Avatar, Box, Card, Container, Flex, Grid, Paper } from '@mantine/core';
+import { memo } from 'react';
 import { Link, Navigate, Outlet, useLocation } from 'react-router-dom';
 import className from './private.layout.module.css';
 import { IRoute, private_routes } from './private.routes';
-import { memo } from 'react';
 
 export const PrivateLayout = memo(() => {
   const location = useLocation();
@@ -84,8 +74,8 @@ export const PrivateLayout = memo(() => {
             <Paper p="sm" my="sm" bg="white">
               <Outlet />
             </Paper>
+            <BottomNavigation routes={private_routes} />
           </Box>
-          <BottomNavigation routes={private_routes} />
         </Grid.Col>
       </Grid>
     </Card>
