@@ -20,7 +20,7 @@ export const BudgetTracker = () => {
         title="New Entry"
         centered
       >
-        <EntryModal />
+        <EntryModal onClose={close} />
       </Modal>
     </Box>
   );
