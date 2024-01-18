@@ -21,6 +21,10 @@ export const BudgetTable = () => {
     >
       <Table.Td>
         <Checkbox
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
           aria-label="Select row"
           checked={selectedRows.includes(element.position)}
           onChange={(event) =>
