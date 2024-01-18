@@ -7,7 +7,8 @@ import {
   Container,
   Flex,
   Grid,
-  Paper
+  Paper,
+  ScrollArea,
 } from '@mantine/core';
 import { memo } from 'react';
 import { Link, Navigate, Outlet, useLocation } from 'react-router-dom';
@@ -88,7 +89,7 @@ export const PrivateLayout = memo(() => {
         >
           <Box p="sm">
             <NavbarDesktop />
-            <Paper p="sm" my="sm" bg="white">
+            <Paper p="sm" my="sm" bg="white" component={ScrollArea} h="90vh">
               <Outlet />
             </Paper>
             <BottomNavigation routes={private_routes} />
