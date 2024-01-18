@@ -1,5 +1,14 @@
 import { BottomNavigation, NavbarDesktop } from '@/common';
-import { Avatar, Box, Card, Container, Flex, Grid, Paper } from '@mantine/core';
+import {
+  ActionIcon,
+  Avatar,
+  Box,
+  Card,
+  Container,
+  Flex,
+  Grid,
+  Paper
+} from '@mantine/core';
 import { memo } from 'react';
 import { Link, Navigate, Outlet, useLocation } from 'react-router-dom';
 import className from './private.layout.module.css';
@@ -11,6 +20,18 @@ export const PrivateLayout = memo(() => {
 
   if (!access_token) return <Navigate to="/sign-in" replace />;
 
+  const renderIcon = ({ icon, route, name }: IRoute) => {
+    return (
+      <ActionIcon
+        autoContrast
+        variant="transparent"
+        aria-label={name}
+        color={location.pathname === route ? 'black' : 'gray'}
+      >
+        {icon}
+      </ActionIcon>
+    );
+  };
   return (
     <Card component={Container} withBorder shadow="xl" p={0} bg="#efefef">
       <Grid gutter={0} columns={12} overflow="hidden">
@@ -51,12 +72,8 @@ export const PrivateLayout = memo(() => {
                 to={route}
                 key={name}
                 gap="sm"
-                style={{
-                  borderLeft:
-                    location.pathname === route ? '3px solid black' : 'none',
-                }}
               >
-                {icon}
+                {renderIcon({ icon, route, name })}
               </Flex>
             ))}
           </Paper>
