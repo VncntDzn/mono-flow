@@ -8,7 +8,8 @@
     "up": "yarn run typeorm-ds migration:run",
     "down": "yarn run typeorm-ds migration:revert",
     "new": "yarn run typeorm migration:create",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "show": "yarn run typeorm-ds migration:show"
   },
   "author": "",
   "license": "ISC",

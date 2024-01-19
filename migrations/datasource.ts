@@ -8,10 +8,12 @@ export default new DataSource({
   username: "postgres",
   password: "031199",
   database: "mono_flow",
-  synchronize: false,
-  migrations: ["*{.ts}"],
+  synchronize: true,
+  migrations: ["./migrations/**/*.ts"],
   namingStrategy: new SnakeNamingStrategy(),
   migrationsRun: true,
   // this searches the api folder for entities
   entities: ["../**/*.entity{.ts}"],
+  cache: false,
+  logging: true
 });

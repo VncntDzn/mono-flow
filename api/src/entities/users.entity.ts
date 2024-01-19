@@ -1,23 +1,20 @@
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
 import { genSalt, hash } from 'bcrypt';
+import { BeforeInsert, Column, Entity } from 'typeorm';
 import { BaseEntity } from './base.entity';
 
 @Entity()
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @Column({ unique: true })
+  @Column({ unique: true, name: 'email' })
   email: string;
 
   @Column()
-  first_name: string;
+  firstName: string;
 
   @Column()
-  last_name: string;
+  lastName: string;
 
-  @Column({ default: true })
-  is_active: boolean;
+  @Column({ default: true, name: 'is_active' })
+  isActive: boolean;
 
   @Column()
   password: string;
