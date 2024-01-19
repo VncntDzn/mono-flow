@@ -13,7 +13,7 @@ export class User extends BaseEntity {
   @Column()
   lastName: string;
 
-  @Column({ default: true, name: 'is_active' })
+  @Column({ default: true })
   isActive: boolean;
 
   @Column()
