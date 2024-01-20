@@ -5,18 +5,18 @@ import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { ISignin, ISignup } from './interfaces/auth.interface';
-import { User } from '@/entities/user.entity';
+import { UserEntity } from '@/entities/user.entity';
 
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(User)
-    private userRepo: Repository<User>,
+    @InjectRepository(UserEntity)
+    private userRepo: Repository<UserEntity>,
     private jwtService: JwtService,
   ) {}
 
   async signup({ email, password, first_name, last_name }: ISignup) {
-    const user = new User();
+    const user = new UserEntity();
     Object.assign(user, {
       email,
       password,
