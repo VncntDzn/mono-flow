@@ -1,8 +1,19 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from './base.entity';
+import { UserEntity } from './user.entity';
+import { TransactionType } from '@/features/transactions/enums';
 
 @Entity()
-export class Transactions extends BaseEntity {
+export class TransactionsEntity extends BaseEntity {
+  @PrimaryGeneratedColumn('uuid', { name: 'transaction_id' })
+  transactionId: string;
+
+  @ManyToOne(() => UserEntity, (user) => user.userId)
+  // Added name since it's a foreign key
+  //need to do something
+  @Column({ name: 'user_id', foreignKeyConstraintName: 'user_id_fk' })
+  userId: string;
+
   @Column()
   transactionName: string;
 
@@ -19,10 +30,12 @@ export class Transactions extends BaseEntity {
   // TODO: need to know the category/wallet/account
   category: string;
 
-  @Column()
-  // TODO: need to know the category
-  type: 'income' | 'expense' | 'savings';
+  @Column({ default: TransactionType.INCOME })
+  type:
+    | TransactionType.INCOME
+    | TransactionType.EXPENSE
+    | TransactionType.SAVINGS;
 
-  @Column({ default: false })
-  recurringTransactions: boolean;
+  @Column({ default: false, name: 'is_recurring' })
+  isRecurring: boolean;
 }

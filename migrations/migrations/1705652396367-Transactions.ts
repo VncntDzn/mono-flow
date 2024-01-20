@@ -46,7 +46,7 @@ export class Transactions1705652396367 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "recurring_transactions",
+            name: "is_recurring",
             isNullable: false,
             type: "boolean",
             default: false,
