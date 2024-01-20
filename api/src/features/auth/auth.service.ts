@@ -1,4 +1,3 @@
-import { User } from '@/entities/users.entity';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -6,6 +5,7 @@ import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { ISignin, ISignup } from './interfaces/auth.interface';
+import { User } from '@/entities/user.entity';
 
 @Injectable()
 export class AuthService {
@@ -20,8 +20,8 @@ export class AuthService {
     Object.assign(user, {
       email,
       password,
-      first_name,
-      last_name,
+      firstName: first_name,
+      lastName: last_name,
     });
     return await this.userRepo.insert(user);
   }
@@ -39,8 +39,8 @@ export class AuthService {
       return {
         access_token,
         email: res.email,
-        last_name: res.last_name,
-        first_name: res.first_name,
+        last_name: res.lastName,
+        first_name: res.firstName,
       };
     } else {
       throw new UnauthorizedException();

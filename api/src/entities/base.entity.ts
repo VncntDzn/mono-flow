@@ -1,16 +1,12 @@
+import { DateTime } from 'luxon';
 import {
   BaseEntity as BaseTypeormEntity,
   BeforeInsert,
   Column,
-  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { DateTime } from 'luxon';
 
 export class BaseEntity extends BaseTypeormEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
   @Column({ type: 'timestamptz' })
   timeCreatedAt: DateTime;
 
