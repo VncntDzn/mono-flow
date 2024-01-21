@@ -13,20 +13,15 @@ export class Transactions1705652396367 implements MigrationInterface {
             generationStrategy: "uuid",
             type: "uuid",
           },
-          {
+         /*  {
             name: "user_id",
             isPrimary: true,
             isGenerated: true,
             generationStrategy: "uuid",
             type: "uuid",
-          },
+          }, */
           {
             name: "transaction_name",
-            isNullable: false,
-            type: "varchar",
-          },
-          {
-            name: "date",
             isNullable: false,
             type: "varchar",
           },
@@ -52,11 +47,12 @@ export class Transactions1705652396367 implements MigrationInterface {
             default: false,
           },
           {
-            name: "created_at",
+            isNullable: true,
+            name: "time_created_at",
             type: "timestamptz",
           },
           {
-            name: "updated_at",
+            name: "time_updated_at",
             type: "timestamptz",
             isNullable: true,
           },

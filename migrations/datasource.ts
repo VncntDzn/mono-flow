@@ -8,7 +8,7 @@ export default new DataSource({
   username: "postgres",
   password: "031199",
   database: "mono_flow",
-  synchronize: true,
+  synchronize: false,
   migrations: ["./migrations/**/*.ts"],
   namingStrategy: new SnakeNamingStrategy(),
   migrationsRun: true,

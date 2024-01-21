@@ -3,8 +3,8 @@ import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from './base.entity';
 
 @Entity()
-export class UserEntity extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
+export class User extends BaseEntity {
+  @PrimaryGeneratedColumn('uuid', { name: 'user_id' })
   userId: string;
 
   @Column({ unique: true, name: 'email' })
@@ -17,10 +17,10 @@ export class UserEntity extends BaseEntity {
   @Column({ name: 'last_name' })
   lastName: string;
 
-  @Column({ default: true })
+  @Column({ default: true, name: 'is_active' })
   isActive: boolean;
 
-  @Column()
+  @Column({ name: 'password' })
   password: string;
 
   @BeforeInsert()

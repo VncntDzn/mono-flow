@@ -4,6 +4,8 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
+  HttpStatus,
   Logger,
   Post,
   Put,
@@ -31,7 +33,7 @@ export class TransactionsController {
     @Body()
     {
       transaction_name,
-      date,
+      time_created_at,
       amount,
       category,
       description,
@@ -39,18 +41,28 @@ export class TransactionsController {
       type,
     }: TransactionsDTO,
   ) {
-    // todo: think about date since user can choose whenever instead of adding it using base entity
-    const res = await this.transactionsService.addTransaction({
-      transactionName: transaction_name,
-      date,
-      amount,
-      category,
-      description,
-      isRecurring: is_recurring,
-      type,
-    });
-
-    return res;
+    try {
+      // todo: think about date since user can choose whenever instead of adding it using base entity
+      const res = await this.transactionsService.addTransaction({
+        transactionName: transaction_name,
+        timeCreatedAt: time_created_at,
+        amount,
+        category,
+        description,
+        isRecurring: is_recurring,
+        type,
+      });
+      return res;
+    } catch (error) {
+      this.logger.error(error);
+      throw new HttpException(
+        {
+          status: HttpStatus.INTERNAL_SERVER_ERROR,
+          error: 'Something went wrong',
+        },
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   @Put()

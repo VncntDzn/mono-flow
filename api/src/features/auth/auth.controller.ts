@@ -27,6 +27,7 @@ export class AuthController {
       });
       return 'success';
     } catch (error) {
+      console.log(error)
       if (error.code === DB_CODES.UNIQUE_VIOLATION) {
         throw new HttpException(
           'Email already exists',

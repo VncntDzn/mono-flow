@@ -7,10 +7,14 @@ import {
 } from 'typeorm';
 
 export class BaseEntity extends BaseTypeormEntity {
-  @Column({ type: 'timestamptz' })
+  @Column({ type: 'timestamptz', name: 'time_created_at', nullable: true })
   timeCreatedAt: DateTime;
 
-  @UpdateDateColumn({ type: 'timestamptz', nullable: true })
+  @UpdateDateColumn({
+    type: 'timestamptz',
+    nullable: true,
+    name: 'time_updated_at',
+  })
   timeUpdatedAt: DateTime | null;
 
   @BeforeInsert()

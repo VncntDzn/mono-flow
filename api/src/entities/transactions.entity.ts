@@ -1,36 +1,29 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { BaseEntity } from './base.entity';
-import { UserEntity } from './user.entity';
 import { TransactionType } from '@/features/transactions/enums';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity } from './base.entity';
 
 @Entity()
-export class TransactionsEntity extends BaseEntity {
+export class Transactions extends BaseEntity {
   @PrimaryGeneratedColumn('uuid', { name: 'transaction_id' })
   transactionId: string;
 
-  @ManyToOne(() => UserEntity, (user) => user.userId)
-  // Added name since it's a foreign key
-  //need to do something
-  @Column({ name: 'user_id', foreignKeyConstraintName: 'user_id_fk' })
-  userId: string;
-
-  @Column()
+  @Column({ name: 'transaction_name' })
   transactionName: string;
 
-  @Column()
+  @Column({ name: 'date' })
   date: string;
 
-  @Column()
+  @Column({ name: 'description' })
   description: string;
 
-  @Column()
+  @Column({ name: 'amount' })
   amount: number;
 
-  @Column()
+  @Column({ name: 'category' })
   // TODO: need to know the category/wallet/account
   category: string;
 
-  @Column({ default: TransactionType.INCOME })
+  @Column({ default: TransactionType.INCOME, name: 'type' })
   type:
     | TransactionType.INCOME
     | TransactionType.EXPENSE

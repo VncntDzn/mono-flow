@@ -17,7 +17,7 @@ export class TransactionsDTO {
   type: TransactionType;
 
   @IsString()
-  date: string;
+  time_created_at: string;
 
   @IsBoolean()
   is_recurring: boolean;

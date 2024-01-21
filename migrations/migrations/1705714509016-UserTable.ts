@@ -41,11 +41,11 @@ export class UserTable1705714509016 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "created_at",
+            name: "time_created_at",
             type: "timestamptz",
           },
           {
-            name: "updated_at",
+            name: "time_updated_at",
             type: "timestamptz",
             isNullable: true,
           },
