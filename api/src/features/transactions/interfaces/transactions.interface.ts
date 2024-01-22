@@ -8,4 +8,5 @@ export interface ITransactions {
   timeCreatedAt: string;
   isRecurring: boolean;
   transactionName: string;
+  userId: string;
 }

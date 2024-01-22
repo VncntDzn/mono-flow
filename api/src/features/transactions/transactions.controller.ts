@@ -39,11 +39,12 @@ export class TransactionsController {
       description,
       is_recurring,
       type,
+      user_id,
     }: TransactionsDTO,
   ) {
     try {
       // todo: think about date since user can choose whenever instead of adding it using base entity
-      const res = await this.transactionsService.addTransaction({
+      await this.transactionsService.addTransaction({
         transactionName: transaction_name,
         timeCreatedAt: time_created_at,
         amount,
@@ -51,8 +52,12 @@ export class TransactionsController {
         description,
         isRecurring: is_recurring,
         type,
+        userId: user_id,
       });
-      return res;
+      return {
+        status: HttpStatus.CREATED,
+        message: 'Transaction added successfully',
+      };
     } catch (error) {
       this.logger.error(error);
       throw new HttpException(

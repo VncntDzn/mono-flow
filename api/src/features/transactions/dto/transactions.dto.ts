@@ -24,4 +24,7 @@ export class TransactionsDTO {
 
   @IsString()
   transaction_name: string;
+
+  @IsString()
+  user_id: string;
 }

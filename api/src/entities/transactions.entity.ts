@@ -1,6 +1,7 @@
 import { TransactionType } from '@/features/transactions/enums';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from './base.entity';
+import { User } from './user.entity';
 
 @Entity()
 export class Transactions extends BaseEntity {
@@ -10,8 +11,9 @@ export class Transactions extends BaseEntity {
   @Column({ name: 'transaction_name' })
   transactionName: string;
 
-  @Column({ name: 'date' })
-  date: string;
+  @ManyToOne(() => User, (userInfo) => userInfo.userId)
+  @JoinColumn({ name: 'user_id', referencedColumnName: 'userId' })
+  userId: string;
 
   @Column({ name: 'description' })
   description: string;

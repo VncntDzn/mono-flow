@@ -13,13 +13,18 @@ export class Transactions1705652396367 implements MigrationInterface {
             generationStrategy: "uuid",
             type: "uuid",
           },
-         /*  {
+          {
             name: "user_id",
-            isPrimary: true,
             isGenerated: true,
             generationStrategy: "uuid",
             type: "uuid",
-          }, */
+            foreignKeyConstraintName: "user_id",
+          },
+          {
+            name: "amount",
+            isNullable: false,
+            type: "varchar",
+          },
           {
             name: "transaction_name",
             isNullable: false,
