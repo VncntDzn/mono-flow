@@ -12,6 +12,8 @@ import {
 } from '@nestjs/common';
 import { TransactionsDTO } from './dto/transactions.dto';
 import { TransactionsService } from './transactions.service';
+import { ApiResponse } from '@/common/types';
+import { Transactions } from '@/entities/transactions.entity';
 
 @Public()
 @Controller('/transactions')
@@ -20,8 +22,9 @@ export class TransactionsController {
   constructor(private readonly transactionsService: TransactionsService) {}
 
   @Get()
-  getTransactions() {
-    return 'Hi';
+  async getTransactions(): Promise<ApiResponse<Transactions[]>> {
+    const res = await this.transactionsService.getTransactions();
+    return { data: res };
   }
   @Get(':id')
   getTransaction() {
