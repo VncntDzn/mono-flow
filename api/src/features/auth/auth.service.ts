@@ -6,6 +6,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { ISignin, ISignup } from './interfaces/auth.interface';
 import { User } from '@/entities/user.entity';
+import { DateTime } from 'luxon';
 
 @Injectable()
 export class AuthService {
@@ -15,15 +16,11 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async signup({ email, password, first_name, last_name }: ISignup) {
-    const user = new User();
-    Object.assign(user, {
-      email,
-      password,
-      firstName: first_name,
-      lastName: last_name,
+  async signup(params: ISignup) {
+    return await this.userRepo.insert({
+      ...params,
+      time_created_at: DateTime.now() as unknown as string,
     });
-    return await this.userRepo.insert(user);
   }
   async signin({ email, password }: ISignin) {
     const res = await this.userRepo.findOneOrFail({
@@ -39,8 +36,8 @@ export class AuthService {
       return {
         access_token,
         email: res.email,
-        last_name: res.lastName,
-        first_name: res.firstName,
+        last_name: res.last_name,
+        first_name: res.first_name,
       };
     } else {
       throw new UnauthorizedException();

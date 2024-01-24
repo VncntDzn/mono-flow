@@ -17,17 +17,15 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('/signup')
-  async signup(@Body() { email, password, first_name, last_name }: SignupDTO) {
+  async signup(@Body() params: SignupDTO) {
     try {
-      await this.authService.signup({
-        email,
-        password,
-        first_name,
-        last_name,
-      });
-      return 'success';
+      await this.authService.signup(params);
+      return {
+        status: HttpStatus.CREATED,
+        message: 'User created successfully',
+      };
     } catch (error) {
-      console.log(error)
+      console.log(error);
       if (error.code === DB_CODES.UNIQUE_VIOLATION) {
         throw new HttpException(
           'Email already exists',
