@@ -4,21 +4,21 @@ import { BaseEntity } from './base.entity';
 
 @Entity()
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'user_id' })
-  userId: string;
+  @PrimaryGeneratedColumn('uuid')
+  user_id: string;
 
-  @Column({ unique: true, name: 'email' })
+  @Column({ unique: true })
   email: string;
 
   // necessary to detect migration's table column name
-  @Column({ name: 'first_name' })
-  firstName: string;
+  @Column()
+  first_name: string;
 
-  @Column({ name: 'last_name' })
-  lastName: string;
+  @Column()
+  last_name: string;
 
-  @Column({ default: true, name: 'is_active' })
-  isActive: boolean;
+  @Column({ default: true })
+  is_active: boolean;
 
   @Column({ name: 'password' })
   password: string;

@@ -11,32 +11,32 @@ import { User } from './user.entity';
 
 @Entity()
 export class Transactions extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid', { name: 'transaction_id' })
-  transactionId: string;
+  @PrimaryGeneratedColumn('uuid')
+  transaction_id: string;
 
-  @Column({ name: 'transaction_name' })
-  transactionName: string;
+  @Column()
+  transaction_name: string;
 
-  @ManyToOne(() => User, (userInfo) => userInfo.userId)
-  @JoinColumn({ name: 'user_id', referencedColumnName: 'userId' })
-  userId: string;
+  @ManyToOne(() => User, (userInfo) => userInfo.user_id)
+  @JoinColumn({ referencedColumnName: 'user_id' })
+  user_id: string;
 
-  @Column({ name: 'description' })
+  @Column()
   description: string;
 
-  @Column({ name: 'amount' })
+  @Column()
   amount: number;
 
-  @Column({ name: 'category' })
+  @Column()
   // TODO: need to know the category/wallet/account
   category: string;
 
-  @Column({ default: TransactionType.INCOME, name: 'type' })
+  @Column({ default: TransactionType.INCOME })
   type:
     | TransactionType.INCOME
     | TransactionType.EXPENSE
     | TransactionType.SAVINGS;
 
   @Column({ default: false, name: 'is_recurring' })
-  isRecurring: boolean;
+  is_recurring: boolean;
 }

@@ -7,18 +7,18 @@ import {
 } from 'typeorm';
 
 export class BaseEntity extends BaseTypeormEntity {
-  @Column({ type: 'timestamptz', name: 'time_created_at', nullable: true })
-  timeCreatedAt: DateTime;
+  @Column({ type: 'timestamptz', nullable: true })
+  time_created_at: DateTime | null;
 
   @UpdateDateColumn({
     type: 'timestamptz',
     nullable: true,
     name: 'time_updated_at',
   })
-  timeUpdatedAt: DateTime | null;
+  time_updated_at: DateTime | null;
 
   @BeforeInsert()
   protected setCreatedAt() {
-    this.timeCreatedAt = DateTime.utc();
+    this.time_created_at = DateTime.utc();
   }
 }
