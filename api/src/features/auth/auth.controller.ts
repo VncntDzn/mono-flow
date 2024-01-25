@@ -10,6 +10,8 @@ import {
 import { AuthService } from './auth.service';
 import { SigninDTO, SignupDTO } from './dto/auth.dto';
 import { DB_CODES } from '@/common/enums/db';
+import { ApiResponse } from '@/common/types';
+import { User } from '@/entities/user.entity';
 
 @Public()
 @Controller('/auth')
@@ -39,24 +41,20 @@ export class AuthController {
     }
   }
   @Post('/signin')
-  async signin(@Body() { email, password }: SigninDTO) {
+  async signin(
+    @Body() { email, password }: SigninDTO,
+  ): Promise<ApiResponse<User>> {
     try {
-      const {
-        access_token,
-        first_name,
-        last_name,
-        email: user_email,
-      } = await this.authService.signin({
+      const { access_token } = await this.authService.signin({
         email,
         password,
       });
 
       return {
-        access_token,
-        user: {
-          first_name,
-          last_name,
-          user_email,
+        status: HttpStatus.OK,
+        message: 'Successfully signed in',
+        include: {
+          access_token,
         },
       };
     } catch (error) {
