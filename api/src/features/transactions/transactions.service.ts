@@ -25,9 +25,9 @@ export class TransactionsService {
   async addTransaction(params: ITransactions): Promise<Transactions> {
     try {
       // this is just like this: https://github.com/nestjs/nest/blob/master/sample/05-sql-typeorm/src/users/users.service.ts#L15
-      const x = this.transactionRepo.insert(params);
+      const transaction = this.transactionRepo.insert(params);
 
-      return x as unknown as Promise<Transactions>;
+      return transaction as unknown as Promise<Transactions>;
     } catch (error: unknown) {
       if (error instanceof QueryFailedError) {
         throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
