@@ -18,7 +18,11 @@ export class Transactions extends BaseEntity {
   transaction_name: string;
 
   @ManyToOne(() => User, (userInfo) => userInfo.user_id)
-  @JoinColumn({ referencedColumnName: 'user_id' })
+  @JoinColumn({
+    foreignKeyConstraintName: 'user_id',
+    referencedColumnName: 'user_id',
+    name: 'user_id',
+  })
   user_id: string;
 
   @Column()

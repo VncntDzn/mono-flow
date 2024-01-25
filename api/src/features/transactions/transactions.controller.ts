@@ -1,4 +1,6 @@
+import { ApiResponse } from '@/common/types';
 import { Public } from '@/constants';
+import { Transactions } from '@/entities/transactions.entity';
 import {
   Body,
   Controller,
@@ -7,13 +9,13 @@ import {
   HttpException,
   HttpStatus,
   Logger,
+  Param,
+  ParseUUIDPipe,
   Post,
   Put,
 } from '@nestjs/common';
 import { TransactionsDTO } from './dto/transactions.dto';
 import { TransactionsService } from './transactions.service';
-import { ApiResponse } from '@/common/types';
-import { Transactions } from '@/entities/transactions.entity';
 
 @Public()
 @Controller('/transactions')
@@ -26,37 +28,24 @@ export class TransactionsController {
     const res = await this.transactionsService.getTransactions();
     return { data: res };
   }
+
   @Get(':id')
-  getTransaction() {
-    return 'Hi';
+  async getTransaction(
+    @Param('id') id: string,
+  ): Promise<ApiResponse<Transactions>> {
+    const res = await this.transactionsService.getTransaction(id);
+    return {
+      data: res,
+    };
   }
 
   @Post()
   async addTransaction(
     @Body()
-    {
-      transaction_name,
-      time_created_at,
-      amount,
-      category,
-      description,
-      is_recurring,
-      type,
-      user_id,
-    }: TransactionsDTO,
+    params: TransactionsDTO,
   ) {
     try {
-      // todo: think about date since user can choose whenever instead of adding it using base entity
-      await this.transactionsService.addTransaction({
-        transactionName: transaction_name,
-        timeCreatedAt: time_created_at,
-        amount,
-        category,
-        description,
-        isRecurring: is_recurring,
-        type,
-        userId: user_id,
-      });
+      await this.transactionsService.addTransaction(params);
       return {
         status: HttpStatus.CREATED,
         message: 'Transaction added successfully',
@@ -73,9 +62,18 @@ export class TransactionsController {
     }
   }
 
-  @Put()
-  updateTransaction() {
-    return 'Hi';
+  @Put(':id')
+  async updateTransaction(
+    @Param('id') id: string,
+    @Body()
+    params: TransactionsDTO,
+  ): Promise<ApiResponse<any>> {
+    try {
+      const res = await this.transactionsService.updateTransaction(id, params);
+      return { data: res };
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 
   @Delete(':id')

@@ -1,6 +1,6 @@
+import { Transform } from 'class-transformer';
 import { IsBoolean, IsEnum, IsNumber, IsString } from 'class-validator';
 import { TransactionType } from '../enums';
-import { Transform } from 'class-transformer';
 
 export class TransactionsDTO {
   @IsNumber()

@@ -5,8 +5,8 @@ export interface ITransactions {
   description: string;
   category: string;
   type: TransactionType;
-  timeCreatedAt: string;
-  isRecurring: boolean;
-  transactionName: string;
-  userId: string;
+  time_created_at: string;
+  is_recurring: boolean;
+  transaction_name: string;
+  user_id: string;
 }

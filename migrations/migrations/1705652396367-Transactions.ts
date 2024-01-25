@@ -15,7 +15,6 @@ export class Transactions1705652396367 implements MigrationInterface {
           },
           {
             name: "user_id",
-            isGenerated: true,
             generationStrategy: "uuid",
             type: "uuid",
             foreignKeyConstraintName: "user_id",
