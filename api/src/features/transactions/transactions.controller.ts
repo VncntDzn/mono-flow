@@ -10,7 +10,6 @@ import {
   HttpStatus,
   Logger,
   Param,
-  ParseUUIDPipe,
   Post,
   Put,
 } from '@nestjs/common';
@@ -26,7 +25,11 @@ export class TransactionsController {
   @Get()
   async getTransactions(): Promise<ApiResponse<Transactions[]>> {
     const res = await this.transactionsService.getTransactions();
-    return { data: res };
+    return {
+      status: HttpStatus.OK,
+      message: 'Successfully retrieved data',
+      data: res,
+    };
   }
 
   @Get(':id')
@@ -35,6 +38,8 @@ export class TransactionsController {
   ): Promise<ApiResponse<Transactions>> {
     const res = await this.transactionsService.getTransaction(id);
     return {
+      status: HttpStatus.OK,
+      message: 'Successfully retrieved data',
       data: res,
     };
   }
@@ -43,7 +48,7 @@ export class TransactionsController {
   async addTransaction(
     @Body()
     params: TransactionsDTO,
-  ) {
+  ): Promise<ApiResponse<Transactions>> {
     try {
       await this.transactionsService.addTransaction(params);
       return {
@@ -67,17 +72,28 @@ export class TransactionsController {
     @Param('id') id: string,
     @Body()
     params: TransactionsDTO,
-  ): Promise<ApiResponse<any>> {
+  ): Promise<ApiResponse<Transactions>> {
     try {
-      const res = await this.transactionsService.updateTransaction(id, params);
-      return { data: res };
+      await this.transactionsService.updateTransaction(id, params);
+      return {
+        status: HttpStatus.OK,
+        message: 'Transaction updated successfully',
+      };
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
   @Delete(':id')
-  deleteTransaction() {
-    return 'Hi';
+  async deleteTransaction(@Param('id') id: string) {
+    try {
+      await this.transactionsService.deleteTransaction(id);
+      return {
+        status: HttpStatus.OK,
+        message: 'Transaction deleted successfully',
+      };
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 }

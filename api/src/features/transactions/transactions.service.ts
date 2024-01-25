@@ -42,7 +42,8 @@ export class TransactionsService {
     );
     return res;
   }
-  async deleteTransaction() {
-    return 'x';
+  async deleteTransaction(id: string) {
+    const res = await this.transactionRepo.delete({ transaction_id: id });
+    return res;
   }
 }
