@@ -8,7 +8,7 @@ import { ITransactions } from './interfaces/transactions.interface';
 export class TransactionsService {
   constructor(
     @InjectRepository(Transactions)
-    private transactionRepo: Repository<Transactions>,
+    private readonly transactionRepo: Repository<Transactions>,
   ) {}
 
   async getTransactions(): Promise<Transactions[]> {
