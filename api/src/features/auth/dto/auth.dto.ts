@@ -28,7 +28,6 @@ export class SigninDTO {
   @IsNotEmpty()
   email: string;
 
-  @IsStrongPassword()
   @IsNotEmpty()
   password: string;
 }

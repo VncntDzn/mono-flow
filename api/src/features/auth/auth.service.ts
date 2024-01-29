@@ -16,11 +16,15 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async signup(params: ISignup) {
-    return await this.userRepo.insert({
-      ...params,
-      time_created_at: DateTime.now() as unknown as string,
+  async signup({ first_name, last_name, email, password }: ISignup) {
+    const user = new User();
+    Object.assign(user, {
+      email,
+      password,
+      first_name,
+      last_name,
     });
+    return await this.userRepo.insert(user);
   }
   async signin({ email, password }: ISignin) {
     const res = await this.userRepo.findOneOrFail({
