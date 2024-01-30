@@ -27,6 +27,12 @@ export const useSignup = () => {
     },
     {
       onSuccess: async (data) => {
+        notifications.show({
+          title: 'Sign up',
+          message: 'Success',
+          autoClose: 3000,
+          color: 'green',
+        });
         return data;
       },
       onError: (err) => {
