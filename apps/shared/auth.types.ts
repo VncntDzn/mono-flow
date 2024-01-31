@@ -5,4 +5,4 @@ export interface ISignup {
   last_name: string;
 }
 
-export type ISignin = Omit<ISignup, 'first_name' | 'last_name'>;
+export type ISignin = Omit<ISignup, "first_name" | "last_name">;

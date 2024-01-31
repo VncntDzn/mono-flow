@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { ISignin, ISignup } from './interfaces/auth.interface';
+import { ISignin, ISignup } from '@shared/auth.types';
 import { User } from '@/entities/user.entity';
 import { DateTime } from 'luxon';
 

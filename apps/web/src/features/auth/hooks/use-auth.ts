@@ -1,7 +1,6 @@
 import { axios } from '@/libs/axios';
 import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
-import { ISignin, ISignup } from '../types/auth.types';
 
 import {
   AuthResponseData,
@@ -10,6 +9,7 @@ import {
 } from '@/libs/axios.types';
 import { notifications } from '@mantine/notifications';
 import localforage from 'localforage';
+import { ISignin, ISignup } from '@shared/auth.types';
 
 export const useSignup = () => {
   return useMutation<
@@ -62,7 +62,7 @@ export const useSignin = () => {
     {
       onSuccess: async (data) => {
         await localforage.setItem('auth', {
-          access_token: data.data.access_token,
+          access_token: data.data.include.access_token,
           isLoggedIn: true,
         });
 
