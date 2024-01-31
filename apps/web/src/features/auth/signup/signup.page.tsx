@@ -19,7 +19,7 @@ import { zodResolver } from 'mantine-form-zod-resolver';
 import { Link } from 'react-router-dom';
 import { useSignup } from '../hooks/use-auth';
 import { signupSchema } from '../schema/auth.schema';
-import { ISignup } from '../types/auth.types';
+import { ISignup } from '@shared/auth.types';
 
 export const Signup = () => {
   const { mutate, isLoading } = useSignup();

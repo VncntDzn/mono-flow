@@ -19,9 +19,9 @@ import { zodResolver } from 'mantine-form-zod-resolver';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSignin } from '../hooks/use-auth';
 import { signinSchema } from '../schema/auth.schema';
-import { ISignin } from '../types/auth.types';
 import { useEffect } from 'react';
 import { useLocalStorage } from '@mantine/hooks';
+import { ISignin } from '@shared/auth.types';
 
 export const Signin = () => {
   const [, setAccessToken] = useLocalStorage({

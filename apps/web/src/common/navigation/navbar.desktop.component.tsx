@@ -1,14 +1,32 @@
 import {
   ActionIcon,
   Avatar,
+  Box,
   Group,
+  Menu,
   Paper,
-  Text,
   TextInput,
+  rem,
 } from '@mantine/core';
-import { IconBell, IconChevronDown, IconSearch } from '@tabler/icons-react';
+import { useLocalStorage } from '@mantine/hooks';
+import {
+  IconBell,
+  IconChevronDown,
+  IconLogout,
+  IconSearch,
+} from '@tabler/icons-react';
+import { useNavigate } from 'react-router-dom';
 
 export const NavbarDesktop = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, _setValue, removeValue] = useLocalStorage({
+    key: 'access_token',
+  });
+  const router = useNavigate();
+  const handleSignOut = () => {
+    removeValue();
+    router('/');
+  };
   return (
     <Paper p="md" radius={0} shadow="xs">
       <Group display="flex" justify="space-between">
@@ -31,17 +49,30 @@ export const NavbarDesktop = () => {
           </ActionIcon>
 
           <Group p={0} gap="sm" align="center">
-            <Avatar
-              tabIndex={1}
-              title="Avatar"
-              color="cyan"
-              radius="xl"
-              size="md"
-              style={{ cursor: 'pointer' }}
-            >
-              VD
-            </Avatar>
-            <Text>Vincent Dizon</Text>
+            <Menu>
+              <Menu.Target>
+                <Avatar
+                  tabIndex={1}
+                  title="Avatar"
+                  color="cyan"
+                  radius="xl"
+                  size="md"
+                  style={{ cursor: 'pointer', position: 'relative' }}
+                >
+                  VD
+                </Avatar>
+              </Menu.Target>
+              <Menu.Dropdown>
+                <Menu.Item
+                  onClick={handleSignOut}
+                  leftSection={
+                    <IconLogout style={{ width: rem(14), height: rem(14) }} />
+                  }
+                >
+                  Sign out
+                </Menu.Item>
+              </Menu.Dropdown>
+            </Menu>
           </Group>
         </Group>
       </Group>
