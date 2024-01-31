@@ -46,7 +46,7 @@ export const Signin = () => {
   const router = useNavigate();
   useEffect(() => {
     if (isSuccess) {
-      setAccessToken(data?.data.access_token);
+      setAccessToken(data.data.include.access_token);
       router('/dashboard');
     }
   }, [data, isSuccess, router, setAccessToken]);

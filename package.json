@@ -1,8 +1,9 @@
 {
   "name": "flow-pos",
   "workspaces": [
-    "api",
-    "web"
+    "apps/api",
+    "apps/web",
+    "migrations/"
   ],
   "private": true,
   "author": "Vincent Dizon"
