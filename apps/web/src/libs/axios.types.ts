@@ -1,5 +1,3 @@
-import { User } from '@/types';
-
 export interface AxiosResponseData<T> {
   data: T;
 }
@@ -9,6 +7,5 @@ export interface AxiosErrorResponseData {
   error: string;
 }
 export interface AuthResponseData {
-  user: User;
-  include: { access_token: string; refresh_token?: string };
+  include: { access_token: string; refresh_token?: string; user_id: string };
 }

@@ -1,11 +1,49 @@
 import { axios } from '@/libs/axios';
 import { useMutation } from 'react-query';
 import { ITransactions } from '@shared/transaction.type';
+import { AxiosErrorResponseData, AxiosResponseData } from '@/libs/axios.types';
+import { AxiosError } from 'axios';
+import { notifications } from '@mantine/notifications';
 
 export const usePostTransaction = () => {
   return useMutation(
+    async (params: ITransactions) => {
+      return await axios.post<
+        AxiosResponseData<any>,
+        AxiosError<AxiosErrorResponseData>,
+        ITransactions
+      >('/transactions', params);
+    },
+    {
+      onSuccess: async (data) => {
+        notifications.show({
+          title: 'Transaction',
+          message: 'Added successfully!',
+          autoClose: 3000,
+          color: 'green',
+        });
+        return data;
+      },
+
+      onError: (err: AxiosError) => {
+        notifications.show({
+          title: 'Sign in',
+          message: err.status !== 404 ? 'Something went wrong' : err.message,
+          autoClose: 3000,
+          color: 'red',
+        });
+      },
+    },
+  );
+};
+export const usePutTransaction = () => {
+  return useMutation(
     async (param: ITransactions) => {
-      return await axios.post('/transaction', param);
+      return await axios.put<
+        AxiosResponseData<any>,
+        AxiosError<AxiosErrorResponseData>,
+        ITransactions
+      >('/transaction', param);
     },
     {
       onSuccess: () => {},
@@ -17,19 +55,6 @@ export const usePostTransaction = () => {
 
 export const useGetTransactions = () => {};
 export const useGetTransaction = () => {};
-
-export const usePutTransaction = () => {
-  return useMutation(
-    async (param: ITransactions) => {
-      return await axios.put('/transaction', param);
-    },
-    {
-      onSuccess: () => {},
-
-      onError: () => {},
-    },
-  );
-};
 
 export const useDeleteTransaction = () => {
   return useMutation(

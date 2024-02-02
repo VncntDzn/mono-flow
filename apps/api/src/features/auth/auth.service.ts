@@ -39,9 +39,9 @@ export class AuthService {
       const access_token = await this.jwtService.signAsync(payload);
       return {
         access_token,
-        email: res.email,
         last_name: res.last_name,
         first_name: res.first_name,
+        user_id: res.user_id,
       };
     } else {
       throw new UnauthorizedException();

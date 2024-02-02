@@ -61,9 +61,11 @@ export const useSignin = () => {
     },
     {
       onSuccess: async (data) => {
-        await localforage.setItem('auth', {
-          access_token: data.data.include.access_token,
-          isLoggedIn: true,
+        notifications.show({
+          title: 'Sign in',
+          message: "Success, you're now logged in",
+          autoClose: 3000,
+          color: 'green',
         });
 
         return data;

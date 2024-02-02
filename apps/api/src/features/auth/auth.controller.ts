@@ -45,16 +45,20 @@ export class AuthController {
     @Body() { email, password }: SigninDTO,
   ): Promise<ApiResponse<User>> {
     try {
-      const { access_token } = await this.authService.signin({
-        email,
-        password,
-      });
+      const { access_token, first_name, last_name, user_id } =
+        await this.authService.signin({
+          email,
+          password,
+        });
 
       return {
         status: HttpStatus.OK,
         message: 'Successfully signed in',
         include: {
           access_token,
+          first_name,
+          last_name,
+          user_id,
         },
       };
     } catch (error) {

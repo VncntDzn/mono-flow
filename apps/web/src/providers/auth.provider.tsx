@@ -4,7 +4,7 @@ import { AuthActionType } from './auth.enums';
 
 import dayjs from 'dayjs';
 import { jwtDecode } from 'jwt-decode';
-export const AuthContext = createContext<IState | null>(null);
+export const AuthContext = createContext<IState | undefined>(undefined);
 export const AuthDispatchContext = createContext<IAuthAction | null>(null);
 
 interface IAuthAction<T = null> {
@@ -15,10 +15,16 @@ interface IAuthAction<T = null> {
 }
 
 interface IState {
-  access_token: string | null;
+  access_token: string | undefined;
+  first_name: string;
+  last_name: string;
+  user_id: string;
 }
 const initialState: IState = {
-  access_token: null,
+  access_token: undefined,
+  first_name: '',
+  last_name: '',
+  user_id: '',
 };
 
 function authReducer(state: IState, actions: IAuthAction) {
@@ -27,6 +33,9 @@ function authReducer(state: IState, actions: IAuthAction) {
       return {
         ...state,
         access_token: actions.payload.access_token,
+        first_name: actions.payload.first_name,
+        last_name: actions.payload.last_name,
+        user_id: actions.payload.user_id,
       };
     }
     case AuthActionType.SIGNOUT: {
@@ -45,7 +54,7 @@ export const AuthProvider = ({ children }: ChildrenProps) => {
   const [isExpired, setIsExpired] = useState(false);
   const access_token = localStorage.getItem('access_token');
   const [auth, dispatch] = useReducer<Reducer<IState, IAuthAction>>(
-    authReducer,
+    authReducer as Reducer<IState, IAuthAction>,
     initialState,
   );
   useEffect(() => {

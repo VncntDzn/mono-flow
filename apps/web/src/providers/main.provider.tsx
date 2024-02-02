@@ -3,6 +3,7 @@ import { Button, MantineProvider } from '@mantine/core';
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import '@mantine/core/styles.css';
+import '@mantine/dates/styles.css';
 import '@mantine/notifications/styles.css';
 import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';

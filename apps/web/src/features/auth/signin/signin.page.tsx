@@ -28,6 +28,10 @@ export const Signin = () => {
     key: 'access_token',
     defaultValue: '',
   });
+  const [, user_id] = useLocalStorage({
+    key: 'user_id',
+    defaultValue: '',
+  });
   const { mutate, isLoading, data, isSuccess } = useSignin();
   const { isValid, onSubmit, getInputProps } = useForm({
     initialValues: {
@@ -47,9 +51,10 @@ export const Signin = () => {
   useEffect(() => {
     if (isSuccess) {
       setAccessToken(data.data.include.access_token);
+      user_id(data.data.include.user_id)
       router('/dashboard');
     }
-  }, [data, isSuccess, router, setAccessToken]);
+  }, [data, isSuccess, router, setAccessToken, user_id]);
   return (
     <Card
       component="form"
