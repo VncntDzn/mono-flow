@@ -12,7 +12,7 @@ async function bootstrap() {
 
   /* app.use(csurf()); */
   app.use(helmet());
-  app.useGlobalFilters(new AllExceptionsFilter(httpAdapter as any));
+  //app.useGlobalFilters(new AllExceptionsFilter(httpAdapter as any));
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   await app.listen(3000);
 }
