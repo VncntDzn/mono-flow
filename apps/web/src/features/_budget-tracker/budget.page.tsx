@@ -6,6 +6,7 @@ import styles from './styles/entry.modal.module.css';
 
 export const BudgetTracker = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
+
   return (
     <Box>
       <Flex gap="sm" justify="flex-end" py="sm">
@@ -14,7 +15,6 @@ export const BudgetTracker = () => {
         <Button>Print</Button>
       </Flex>
       <BudgetTable />
-
       <Modal
         classNames={{
           title: styles.title,

@@ -16,12 +16,13 @@ import { IconChevronDown } from '@tabler/icons-react';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import { usePostTransaction } from '../hooks/use-transactions';
 import { transactionSchema } from '../schema/transaction.schema';
+import { useEffect } from 'react';
 interface Props {
   onClose: () => void;
 }
 export const EntryModal = ({ onClose }: Props) => {
   const user_id: string = readLocalStorageValue({ key: 'user_id' });
-  const { mutate, isLoading } = usePostTransaction();
+  const { mutate, isLoading, isSuccess } = usePostTransaction();
   const { isValid, onSubmit, getInputProps } = useForm({
     initialValues: {
       amount: 0,
@@ -37,7 +38,11 @@ export const EntryModal = ({ onClose }: Props) => {
   const handleOnSubmit = (param: Omit<ITransactions, 'user_id'>) => {
     mutate({ ...param, user_id });
   };
-
+  useEffect(() => {
+    if (isSuccess) {
+      onClose();
+    }
+  }, [onClose, isSuccess]);
   return (
     <Box py="sm" component="form" onSubmit={onSubmit(handleOnSubmit)}>
       <Flex gap="sm">
