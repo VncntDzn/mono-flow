@@ -5,6 +5,7 @@ import {
   Delete,
   Get,
   HttpStatus,
+  Param,
   Post,
   Put,
 } from '@nestjs/common';
@@ -18,12 +19,15 @@ import { Wallets } from '@/entities/wallets.entity';
 export class WalletsController {
   constructor(private readonly service: WalletsService) {}
 
-  @Get()
-  async getWallets() {
+  @Get(':user_id')
+  async getWallets(
+    @Param('user_id') user_id: string,
+  ): Promise<ApiResponse<Wallets[]>> {
+    const res = await this.service.getWallets(user_id);
     return {
       status: HttpStatus.OK,
       message: 'Successfully retrieved data',
-      data: [],
+      data: res,
     };
   }
 
@@ -31,7 +35,7 @@ export class WalletsController {
   async addWallet(
     @Body() { name, balance, provider, user_id }: WalletsDTO,
   ): Promise<ApiResponse<Wallets>> {
-    const res = await this.service.addWallet({
+    await this.service.addWallet({
       name,
       balance,
       provider,
@@ -40,7 +44,6 @@ export class WalletsController {
     return {
       status: HttpStatus.CREATED,
       message: 'Wallet created successfully',
-      data: res,
     };
   }
 

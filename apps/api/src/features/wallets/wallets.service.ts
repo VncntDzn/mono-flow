@@ -11,7 +11,18 @@ export class WalletsService {
     private readonly repo: Repository<Wallets>,
   ) {}
 
-  async getWallets() {}
+  async getWallets(user_id: Wallets['user_id']): Promise<Wallets[]> {
+    try {
+      const res = await this.repo.find({
+        where: {
+          user_id,
+        },
+      });
+      return res;
+    } catch (error) {
+      return error;
+    }
+  }
   async addWallet(param: IWallet): Promise<Wallets> {
     try {
       const wallet = new Wallets();
