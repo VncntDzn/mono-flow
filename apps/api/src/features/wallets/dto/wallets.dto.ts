@@ -1,10 +1,10 @@
-import { IsNumber, IsString } from 'class-validator';
+import { IsNumberString, IsString } from 'class-validator';
 
 export class WalletsDTO {
   @IsString()
   name: string;
 
-  @IsNumber()
+  @IsNumberString()
   balance: number;
 
   @IsString()
