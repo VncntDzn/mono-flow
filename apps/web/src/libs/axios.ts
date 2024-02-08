@@ -18,7 +18,7 @@ axios.interceptors.request.use(async (config) => {
 
 axios.interceptors.response.use(
   async (response) => {
-    return response;
+    return response.data;
   },
   (error) => {
     // Log out when 401 received

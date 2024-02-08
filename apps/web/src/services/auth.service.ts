@@ -1,18 +1,14 @@
 import { axios } from '@/libs/axios';
-import { AxiosError } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import { useMutation } from 'react-query';
 
-import {
-  AuthResponseData,
-  AxiosErrorResponseData,
-  AxiosResponseData,
-} from '@/libs/axios.types';
+import { AuthResponseData, AxiosErrorResponseData } from '@/libs/axios.types';
 import { notifications } from '@mantine/notifications';
 import { ISignin, ISignup } from '@shared/auth.types';
 
 export const useSignup = () => {
   return useMutation<
-    AxiosResponseData<AuthResponseData>,
+    AxiosResponse<AuthResponseData>,
     AxiosError<AxiosErrorResponseData>,
     ISignup
   >(
@@ -48,7 +44,7 @@ export const useSignup = () => {
 
 export const useSignin = () => {
   return useMutation<
-    AxiosResponseData<AuthResponseData>,
+    AxiosResponse<AuthResponseData>,
     AxiosError<AxiosErrorResponseData>,
     ISignin
   >(
@@ -62,7 +58,7 @@ export const useSignin = () => {
       onSuccess: async (data) => {
         notifications.show({
           title: 'Sign in',
-          message: "Success, you're now logged in",
+          message: data.data.message,
           autoClose: 3000,
           color: 'green',
         });
