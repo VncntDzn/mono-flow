@@ -1,30 +1,19 @@
 import {
   ActionIcon,
   Avatar,
-  Box,
   Group,
   Menu,
   Paper,
   TextInput,
   rem,
 } from '@mantine/core';
-import { useLocalStorage } from '@mantine/hooks';
-import {
-  IconBell,
-  IconChevronDown,
-  IconLogout,
-  IconSearch,
-} from '@tabler/icons-react';
+import { IconBell, IconLogout, IconSearch } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 
 export const NavbarDesktop = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, _setValue, removeValue] = useLocalStorage({
-    key: 'access_token',
-  });
   const router = useNavigate();
   const handleSignOut = () => {
-    removeValue();
+    localStorage.clear();
     router('/');
   };
   return (

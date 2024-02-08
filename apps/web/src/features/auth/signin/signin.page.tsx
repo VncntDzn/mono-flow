@@ -50,8 +50,8 @@ export const Signin = () => {
   const router = useNavigate();
   useEffect(() => {
     if (isSuccess) {
-      setAccessToken(data.data.include.access_token);
-      user_id(data.data.include.user_id)
+      setAccessToken(data.include.access_token);
+      user_id(data.include.user_id)
       router('/dashboard');
     }
   }, [data, isSuccess, router, setAccessToken, user_id]);

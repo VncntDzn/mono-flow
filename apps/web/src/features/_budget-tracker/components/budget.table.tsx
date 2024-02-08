@@ -1,7 +1,7 @@
-import { Checkbox, Skeleton, Table } from '@mantine/core';
-import { useState } from 'react';
-import styles from '../styles/table.module.css';
 import { useGetTransactions } from '@/services/transactions.service';
+import { Checkbox, Skeleton, Table } from '@mantine/core';
+import { Suspense, useState } from 'react';
+import styles from '../styles/table.module.css';
 const elements = [
   { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
   { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
@@ -10,7 +10,7 @@ const elements = [
   { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
 ];
 export const BudgetTable = () => {
-  const { data, isLoading } = useGetTransactions();
+  const { data } = useGetTransactions();
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
 
   if (data) {
@@ -51,31 +51,30 @@ export const BudgetTable = () => {
     </Table.Tr>
   ));
 
-  if (isLoading) {
-    return <Skeleton height={200} />;
-  }
   return (
-    <Table
-      classNames={{
-        th: styles.th,
-        tbody: styles.tbody,
-      }}
-      highlightOnHover
-      withTableBorder
-      withColumnBorders
-      stickyHeader
-      style={{ marginTop: '1rem' }}
-    >
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th>#</Table.Th>
-          <Table.Th>Element position</Table.Th>
-          <Table.Th>Element name</Table.Th>
-          <Table.Th>Symbol</Table.Th>
-          <Table.Th>Atomic mass</Table.Th>
-        </Table.Tr>
-      </Table.Thead>
-      <Table.Tbody>{rows}</Table.Tbody>
-    </Table>
+    <Suspense fallback={<Skeleton height={200} />}>
+      <Table
+        classNames={{
+          th: styles.th,
+          tbody: styles.tbody,
+        }}
+        highlightOnHover
+        withTableBorder
+        withColumnBorders
+        stickyHeader
+        style={{ marginTop: '1rem' }}
+      >
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>#</Table.Th>
+            <Table.Th>Element position</Table.Th>
+            <Table.Th>Element name</Table.Th>
+            <Table.Th>Symbol</Table.Th>
+            <Table.Th>Atomic mass</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </Table>
+    </Suspense>
   );
 };
