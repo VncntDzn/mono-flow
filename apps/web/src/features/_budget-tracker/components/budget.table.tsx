@@ -1,6 +1,7 @@
-import { Checkbox, Table } from '@mantine/core';
+import { Checkbox, Skeleton, Table } from '@mantine/core';
 import { useState } from 'react';
 import styles from '../styles/table.module.css';
+import { useGetTransactions } from '@/services/transactions.service';
 const elements = [
   { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
   { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
@@ -9,7 +10,12 @@ const elements = [
   { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
 ];
 export const BudgetTable = () => {
+  const { data, isLoading } = useGetTransactions();
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
+
+  if (data) {
+    console.log(data);
+  }
   const rows = elements.map((element) => (
     <Table.Tr
       key={element.name}
@@ -44,6 +50,10 @@ export const BudgetTable = () => {
       <Table.Td>{element.mass}</Table.Td>
     </Table.Tr>
   ));
+
+  if (isLoading) {
+    return <Skeleton height={200} />;
+  }
   return (
     <Table
       classNames={{

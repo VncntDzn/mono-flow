@@ -17,7 +17,7 @@ import {
 } from '@tabler/icons-react';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import { Link } from 'react-router-dom';
-import { useSignup } from '../hooks/use-auth';
+import { useSignup } from '@/services/auth.service';
 import { signupSchema } from '../schema/auth.schema';
 import { ISignup } from '@shared/auth.types';
 

@@ -14,7 +14,7 @@ import { readLocalStorageValue } from '@mantine/hooks';
 import { ITransactions } from '@shared/transaction.type';
 import { IconChevronDown } from '@tabler/icons-react';
 import { zodResolver } from 'mantine-form-zod-resolver';
-import { usePostTransaction } from '../hooks/use-transactions';
+import { usePostTransaction } from '@/services/transactions.service';
 import { transactionSchema } from '../schema/transaction.schema';
 import { useEffect } from 'react';
 interface Props {

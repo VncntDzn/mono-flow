@@ -2,7 +2,8 @@ import {
   IconCards,
   IconHistory,
   IconLayoutCollage,
-  IconUser
+  IconUser,
+  IconWallet
 } from '@tabler/icons-react';
 
 export interface IRoute {
@@ -20,6 +21,11 @@ export const private_routes: IRoute[] = [
     icon: <IconCards />,
     route: '/budget-tracker',
     name: 'Budge Tracker',
+  },
+  {
+    icon: <IconWallet />,
+    route: '/wallet',
+    name: 'Wallet',
   },
   {
     icon: <IconUser />,

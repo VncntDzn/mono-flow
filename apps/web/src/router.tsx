@@ -11,6 +11,7 @@ import { Signup } from './features/auth/signup/signup.page';
 import { UnderMaintenance } from './features/error-pages/maintenance.page';
 import { NotFound } from './features/error-pages/not-found.page';
 import { PrivateLayout } from './features/layouts';
+import { Wallet } from './features/_wallet/wallet.page';
 
 const router = createBrowserRouter([
   {
@@ -98,6 +99,17 @@ const router = createBrowserRouter([
               <title>Budget Tracker</title>
             </Helmet>
             <BudgetTracker />
+          </>
+        ),
+      },
+      {
+        path: '/wallet',
+        element: (
+          <>
+            <Helmet>
+              <title>Wallet</title>
+            </Helmet>
+            <Wallet />
           </>
         ),
       },

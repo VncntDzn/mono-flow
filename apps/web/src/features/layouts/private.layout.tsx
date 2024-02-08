@@ -99,3 +99,5 @@ export const PrivateLayout = memo(() => {
     </Card>
   );
 });
+
+PrivateLayout.displayName = 'PrivateLayout'

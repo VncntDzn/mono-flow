@@ -8,7 +8,6 @@ import {
   AxiosResponseData,
 } from '@/libs/axios.types';
 import { notifications } from '@mantine/notifications';
-import localforage from 'localforage';
 import { ISignin, ISignup } from '@shared/auth.types';
 
 export const useSignup = () => {

@@ -1,5 +1,5 @@
 import { axios } from '@/libs/axios';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { ITransactions } from '@shared/transaction.type';
 import { AxiosErrorResponseData, AxiosResponseData } from '@/libs/axios.types';
 import { AxiosError } from 'axios';
@@ -53,7 +53,22 @@ export const usePutTransaction = () => {
   );
 };
 
-export const useGetTransactions = () => {};
+export const useGetTransactions = () => {
+  return useQuery(
+    ['transactions'],
+    async () => {
+      return await axios.get('/transactions');
+    },
+    {
+      onError: () => {
+        return notifications.show({
+          message: 'Something went wrong',
+          color: 'red',
+        });
+      },
+    },
+  );
+};
 export const useGetTransaction = () => {};
 
 export const useDeleteTransaction = () => {

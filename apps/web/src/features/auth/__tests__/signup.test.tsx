@@ -14,7 +14,7 @@ import nock from 'nock';
 import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
-import { useSignup } from '../hooks/use-auth';
+import { useSignup } from '@/services/auth.service';
 import { Signup } from '../signup/signup.page';
 import { renderHook } from '@testing-library/react-hooks';
 import { ChildrenProps } from '@/types';

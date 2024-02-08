@@ -16,7 +16,7 @@ import nock from 'nock';
 import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
-import { useSignin } from '../hooks/use-auth';
+import { useSignin } from '@/services/auth.service';
 import { Signin } from '../signin/signin.page';
 describe('Sign ip page', () => {
   const queryClient = new QueryClient({
