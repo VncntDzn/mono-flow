@@ -3,7 +3,7 @@ import { AxiosErrorResponseData } from '@/libs/axios.types';
 import { readLocalStorageValue } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { IWallet } from '@shared/wallet.type';
-import { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError } from 'axios';
 import { useMutation, useQuery } from 'react-query';
 
 interface WalletResponse {

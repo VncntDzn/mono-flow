@@ -1,18 +1,21 @@
 import { axios } from '@/libs/axios';
 import { useMutation, useQuery } from 'react-query';
 import { ITransactions } from '@shared/transaction.type';
-import { AxiosErrorResponseData, AxiosResponseData } from '@/libs/axios.types';
-import { AxiosError } from 'axios';
+import { AxiosErrorResponseData } from '@/libs/axios.types';
+import { AxiosError, AxiosResponse } from 'axios';
 import { notifications } from '@mantine/notifications';
+import { readLocalStorageValue } from '@mantine/hooks';
 
 export const usePostTransaction = () => {
+  const user_id: string = readLocalStorageValue({ key: 'user_id' });
+
   return useMutation(
-    async (params: ITransactions) => {
+    async (params: Omit<ITransactions, 'user_id'>) => {
       return await axios.post<
-        AxiosResponseData<any>,
+        AxiosResponse<any>,
         AxiosError<AxiosErrorResponseData>,
         ITransactions
-      >('/transactions', params);
+      >('/transactions', { ...params, user_id });
     },
     {
       onSuccess: async (data) => {
@@ -40,7 +43,7 @@ export const usePutTransaction = () => {
   return useMutation(
     async (param: ITransactions) => {
       return await axios.put<
-        AxiosResponseData<any>,
+        AxiosResponse<any>,
         AxiosError<AxiosErrorResponseData>,
         ITransactions
       >('/transaction', param);
@@ -54,20 +57,9 @@ export const usePutTransaction = () => {
 };
 
 export const useGetTransactions = () => {
-  return useQuery(
-    ['transactions'],
-    async () => {
-      return await axios.get('/transactions');
-    },
-    {
-      onError: () => {
-        return notifications.show({
-          message: 'Something went wrong',
-          color: 'red',
-        });
-      },
-    },
-  );
+  return useQuery(['transactions'], async () => {
+    return await axios.get('/transactions');
+  });
 };
 export const useGetTransaction = () => {};
 

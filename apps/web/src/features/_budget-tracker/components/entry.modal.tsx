@@ -1,3 +1,4 @@
+import { usePostTransaction } from '@/services/transactions.service';
 import {
   Autocomplete,
   Box,
@@ -10,19 +11,18 @@ import {
 } from '@mantine/core';
 import { DateInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
-import { readLocalStorageValue } from '@mantine/hooks';
 import { ITransactions } from '@shared/transaction.type';
 import { IconChevronDown } from '@tabler/icons-react';
 import { zodResolver } from 'mantine-form-zod-resolver';
-import { usePostTransaction } from '@/services/transactions.service';
-import { transactionSchema } from '../schema/transaction.schema';
 import { useEffect } from 'react';
+import { transactionSchema } from '../schema/transaction.schema';
+import { useGetWallets } from '@/services/wallets.service';
 interface Props {
   onClose: () => void;
 }
 export const EntryModal = ({ onClose }: Props) => {
-  const user_id: string = readLocalStorageValue({ key: 'user_id' });
   const { mutate, isLoading, isSuccess } = usePostTransaction();
+  const { data: wallets } = useGetWallets();
   const { isValid, onSubmit, getInputProps } = useForm({
     initialValues: {
       amount: 0,
@@ -36,7 +36,7 @@ export const EntryModal = ({ onClose }: Props) => {
     validate: zodResolver(transactionSchema),
   });
   const handleOnSubmit = (param: Omit<ITransactions, 'user_id'>) => {
-    mutate({ ...param, user_id });
+    mutate(param);
   };
   useEffect(() => {
     if (isSuccess) {
@@ -83,6 +83,7 @@ export const EntryModal = ({ onClose }: Props) => {
           placeholder="Choose a wallet"
           withAsterisk
           {...getInputProps('category')}
+          // TODO: get wallets
           data={['React', 'Angular', 'Vue', 'Svelte']}
         />
         <Autocomplete

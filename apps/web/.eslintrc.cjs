@@ -26,5 +26,8 @@ module.exports = {
         argsIgnorePattern: '^_',
       },
     ],
-  },
+    // New rules for type annotations
+    '@typescript-eslint/explicit-function-return-type': 'warn',
+    '@typescript-eslint/no-inferrable-types': 'warn', // Disallow explicit types where they can be easily inferred by TypeScript
+     },
 };

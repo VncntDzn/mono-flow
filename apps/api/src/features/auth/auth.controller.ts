@@ -11,7 +11,7 @@ import { AuthService } from './auth.service';
 import { SigninDTO, SignupDTO } from './dto/auth.dto';
 import { DB_CODES } from '@/common/enums/db';
 import { ApiResponse } from '@/common/types';
-import { User } from '@/entities/user.entity';
+import { ISigninWithToken } from './interfaces/signin.interface';
 
 @Public()
 @Controller('/auth')
@@ -43,23 +43,17 @@ export class AuthController {
   @Post('/signin')
   async signin(
     @Body() { email, password }: SigninDTO,
-  ): Promise<ApiResponse<User>> {
+  ): Promise<ApiResponse<ISigninWithToken>> {
     try {
-      const { access_token, first_name, last_name, user_id } =
-        await this.authService.signin({
-          email,
-          password,
-        });
+      const res = await this.authService.signin({
+        email,
+        password,
+      });
 
       return {
         status: HttpStatus.OK,
         message: 'Successfully signed in',
-        include: {
-          access_token,
-          first_name,
-          last_name,
-          user_id,
-        },
+        data: res,
       };
     } catch (error) {
       throw new NotFoundException('User not found.');

@@ -6,7 +6,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { ISignin, ISignup } from '@shared/auth.types';
 import { User } from '@/entities/user.entity';
-import { DateTime } from 'luxon';
+import { ISigninWithToken } from './interfaces/signin.interface';
 
 @Injectable()
 export class AuthService {
@@ -26,7 +26,7 @@ export class AuthService {
     });
     return await this.userRepo.insert(user);
   }
-  async signin({ email, password }: ISignin) {
+  async signin({ email, password }: ISignin): Promise<ISigninWithToken> {
     const res = await this.userRepo.findOneOrFail({
       where: {
         email,

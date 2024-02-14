@@ -6,5 +6,9 @@ export interface AxiosErrorResponseData {
 export interface AuthResponseData {
   status: number;
   message: string;
-  include: { access_token: string; refresh_token?: string; user_id: string };
+  data: {
+    access_token: string;
+    refresh_token?: string;
+    user_id: string;
+  };
 }

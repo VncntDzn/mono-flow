@@ -44,7 +44,7 @@ export const useSignup = () => {
 
 export const useSignin = () => {
   return useMutation<
-    AxiosResponse<AuthResponseData>,
+    AuthResponseData,
     AxiosError<AxiosErrorResponseData>,
     ISignin
   >(
@@ -58,7 +58,7 @@ export const useSignin = () => {
       onSuccess: async (data) => {
         notifications.show({
           title: 'Sign in',
-          message: data.data.message,
+          message: data.message,
           autoClose: 3000,
           color: 'green',
         });
