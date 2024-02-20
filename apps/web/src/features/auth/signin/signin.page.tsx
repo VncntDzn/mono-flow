@@ -19,11 +19,11 @@ import { zodResolver } from 'mantine-form-zod-resolver';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSignin } from '@/services/auth.service';
 import { signinSchema } from '../schema/auth.schema';
-import { useEffect } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { useLocalStorage } from '@mantine/hooks';
 import { ISignin } from '@shared/auth.types';
 
-export const Signin = () => {
+export const Signin = (): ReactElement => {
   const [, setAccessToken] = useLocalStorage({
     key: 'access_token',
     defaultValue: '',
@@ -41,7 +41,7 @@ export const Signin = () => {
     validate: zodResolver(signinSchema),
   });
 
-  const handleSignin = ({ password, email }: ISignin) => {
+  const handleSignin = ({ password, email }: ISignin): void => {
     mutate({
       password,
       email,

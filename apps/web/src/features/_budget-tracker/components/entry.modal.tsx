@@ -14,13 +14,14 @@ import { useForm } from '@mantine/form';
 import { ITransactions } from '@shared/transaction.type';
 import { IconChevronDown } from '@tabler/icons-react';
 import { zodResolver } from 'mantine-form-zod-resolver';
-import { useEffect } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { transactionSchema } from '../schema/transaction.schema';
 import { useGetWallets } from '@/services/wallets.service';
+import { IWallet } from '@shared/wallet.type';
 interface Props {
   onClose: () => void;
 }
-export const EntryModal = ({ onClose }: Props) => {
+export const EntryModal = ({ onClose }: Props): ReactElement => {
   const { mutate, isLoading, isSuccess } = usePostTransaction();
   const { data: wallets } = useGetWallets();
   const { isValid, onSubmit, getInputProps } = useForm({
@@ -35,8 +36,10 @@ export const EntryModal = ({ onClose }: Props) => {
     },
     validate: zodResolver(transactionSchema),
   });
-  const handleOnSubmit = (param: Omit<ITransactions, 'user_id'>) => {
-    mutate(param);
+  const handleOnSubmit = (
+    transaction: Omit<ITransactions, 'user_id'>,
+  ): void => {
+    mutate(transaction);
   };
   useEffect(() => {
     if (isSuccess) {
@@ -83,8 +86,7 @@ export const EntryModal = ({ onClose }: Props) => {
           placeholder="Choose a wallet"
           withAsterisk
           {...getInputProps('category')}
-          // TODO: get wallets
-          data={['React', 'Angular', 'Vue', 'Svelte']}
+          data={wallets && wallets.data.map((v: IWallet) => v.name)}
         />
         <Autocomplete
           rightSection={<IconChevronDown />}
@@ -102,6 +104,7 @@ export const EntryModal = ({ onClose }: Props) => {
           {...getInputProps('time_created_at')}
           label="Transaction Date"
           placeholder="Choose a date"
+          withAsterisk
         />
         <Checkbox
           {...getInputProps('is_recurring')}

@@ -40,7 +40,6 @@ export const PrivateLayout = memo(() => {
           span={{ xs: 0, md: 3, lg: 1 }}
           component="aside"
           visibleFrom="lg"
-          h="100vh"
           p={0}
           m={0}
         >
@@ -100,4 +99,4 @@ export const PrivateLayout = memo(() => {
   );
 });
 
-PrivateLayout.displayName = 'PrivateLayout'
+PrivateLayout.displayName = 'PrivateLayout';
